@@ -16,6 +16,7 @@
             </div>
             
             @livewire('test')
+            <livewire:counter/>
         </div>
     </div>
 
