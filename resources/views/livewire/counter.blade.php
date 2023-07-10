@@ -2,5 +2,4 @@
     <button wire:click:enter="increment">+</button>
     <h1>{{ $count }}</h1>
     <button wire:click="decrement">-</button>
-
 </div>
