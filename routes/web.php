@@ -5,6 +5,19 @@ use App\Http\Controllers\CellarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SAQController;
 
+use App\Http\Livewire\SingleBottle;
+use App\Http\Livewire\ManyBottles;
+
+
+
+
+
+
+
+
+use App\Http\Livewire\SingleCellar;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +35,35 @@ Route::get('/', function () {
 
 // À refaire avec LiveWire  N'oublier pas de mettre des commentaire en Français et le phpDoc aussi. 
 
+
+/////////////////////// Maryline ///////
+
+
+/////////////////////// Fin Maryline ///////
+
+
+/////////////////////// Farzad ///////
+
+
+/////////////////////// Fin Farzad ///////
+
+
+
+/////////////////////// Camille ///////
+
+
+/////////////////////// Fin Camille ///////
+
+
+/////////////////////// Safoora ///////
+
 Route::get('update',[SaqController::class,'updateSAQ']);
-Route::get('bottles',[BottleController::class,'index']);
+////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('bottles',ManyBottles::class);
+Route::get('/bottles/{bottle_id}', SingleBottle::class);
+
+//////////////////////////////////////////////////////////////////////////////////////
 Route::get('cellar',[CellarController::class,'index']);
 Route::post('cellar',[CellarController::class,'store']);
 
@@ -35,3 +75,23 @@ Route::get('autocompleteBottle',[BottleController::class,'autocompleteBottle']);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////// Fin Safoora ///////
+
+
+/////////////////////// Xavier ///////
+
+
+Route::get('/singleCellar/{cellar_id}',SingleCellar::class);
