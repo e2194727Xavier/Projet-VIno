@@ -4,37 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Laravel Livewire App</title>
+    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="h-screen flex flex-col ">
+
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+   
+
+    @livewire('button', ['lable' => "click on me"])
+
+
 
 <!-- test maryline -->
-   @livewire('header') <!-- for testing -->
 
 
-
-
-
-
-
-    @livewire('many-bottles')
-
-    <!-- test safoora -->
-
-
-
-    <!-- test Xavier  -->
-
-
-
-    <!-- test Farzad -->
-
-    <!-- test camille  -->
-    <!-- for testing -->
-    @livewire('footer')
 
 
     @livewireScripts
+    <div class="bg-blue-500">@livewire('footer') </div>
 </body>
 </html>
