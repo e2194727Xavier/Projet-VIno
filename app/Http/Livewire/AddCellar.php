@@ -6,7 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cellar;
 
-class AjouterCellier extends Component
+class AddCellar extends Component
 {
     public $nom;
 
@@ -38,6 +38,6 @@ class AjouterCellier extends Component
 
     public function render()
     {
-        return view('livewire.ajouter-cellier')->layout('layouts.app');
+        return view('livewire.add-cellar')->layout('layouts.app');
     }
 }
