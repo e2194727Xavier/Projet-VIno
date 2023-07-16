@@ -14,6 +14,8 @@
 
 use App\Http\Livewire\AddCellar;
 use App\Http\Livewire\AddBottle;
+use App\Http\Livewire\Home;
+use App\Http\Controllers\CustomAuthController;
 
 
 
@@ -28,10 +30,11 @@ use App\Http\Livewire\AddBottle;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function (){
 // À refaire avec LiveWire  N'oublier pas de mettre des commentaire en Français et le phpDoc aussi. 
 
 
@@ -61,7 +64,7 @@ Route::get('formAddBottle', AddBottle::class);
 Route::get('update',[SaqController::class,'updateSAQ']);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('bottles',ManyBottles::class);
+Route::get('bottles',ManyBottles::class)->name('bottles');
 Route::get('/bottles/{bottle_id}', SingleBottle::class);
 
 Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
@@ -90,3 +93,12 @@ Route::get('searchBottle',[BottleController::class,'searchBottle']);
 
 /////////////////////// Xavier ///////
 Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
+Route::get('/home',Home::class)->name('home');
+});
+
+
+
+Route::post('/register', [CustomAuthController::class, 'store']);
+Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
+Route::get('login', [CustomAuthController::class,'index'])->name('login');
+Route::post('login', [CustomAuthController::class,'authentication']);
