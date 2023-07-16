@@ -36,7 +36,9 @@ Route::get('/welcome', function () {
 
 Route::middleware('auth')->group(function (){
 // À refaire avec LiveWire  N'oublier pas de mettre des commentaire en Français et le phpDoc aussi. 
-
+Route::get('/app', function () {
+    return view('layouts.app');
+});
 
 /////////////////////// Maryline ///////
 

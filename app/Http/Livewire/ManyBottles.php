@@ -11,6 +11,14 @@ class ManyBottles extends Component
     use WithPagination;
     
     public $component = 'bottles';
+
+    public $user;
+
+    public function mount()
+    {
+        $this->user = auth()->user();
+        dd($this->user->id);
+    }
     public function styles()
     {
         return [
