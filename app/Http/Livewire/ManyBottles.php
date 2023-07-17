@@ -17,7 +17,6 @@ class ManyBottles extends Component
     public function mount()
     {
         $this->user = auth()->user();
-        dd($this->user->id);
     }
     public function styles()
     {

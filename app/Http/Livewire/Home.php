@@ -21,6 +21,7 @@ class Home extends Component
     public function logout()
     {
         auth()->logout();
+        session()->flush();
         return redirect()->to('welcome');
     }
 }
