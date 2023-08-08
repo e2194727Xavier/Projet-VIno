@@ -20,6 +20,7 @@ class SingleBottle extends Component
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar=session('cellar_inf');
+        dd($cellar);
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.single-bottle', ['bottle' => $this->bottle]);
