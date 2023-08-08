@@ -20,7 +20,7 @@ class CustomAuthController extends Controller
      */
     public function index()
     {
-        return view('auth.index');
+        return view('auth.welcome');
     }
 
 
@@ -99,9 +99,9 @@ class CustomAuthController extends Controller
             session()->put('cellar_inf', $cellarInf);
 
             // Redirection vers la page souhaitée après l'authentification réussie ou vers bottles par défaut
-            return redirect()->intended(route('bottles'));
+            return redirect()->intended(route('index'));
         }
         // Redirection vers la page de connexion avec un message d'erreur en cas d'échec d'authentification
-         return redirect()->back()->withInput($request->except('password'))->withErrors('Courriel ou mot de passe invalide.');
+        return redirect()->back()->withErrors('Courriel ou mot de passe invalide');
     }
 }

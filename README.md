@@ -1,5 +1,19 @@
 # Vino
 
+#### copie du travail originale, je ne savais pas trop comment gérer le répertoire et je n'ai pas voulu y toucher. 
+
+#### pour faciliter la tâche j'ai ajouté des liens ahref à la place de bouton lorsquon navigue... on pourra changer plus tard, à voir
+
+##### 1- Noublie pas composer install & npm install & .env
+
+###### 2- Changements apporté à la page login et create. les boutons et liens fonctionnes. 
+###### 3- Ajout d'une page index lors de la connexion, pour le moment à titre d'exemple rien ne fonctionne, que mettre ici? (28juillet)
+###### 4- Modif au footer - ajout icone 'acceuil' on doit connecter la wishlist, le reste est fonctionnel (29juillet)
+###### 5- attention j'ai fais du ménage dans les dossiers afin de créer des sous-dossiers, ce qui peut occasionner des erreurs de routes.... 
+###### 6- tailwind config changement d'une couleur red est maintenant red-wine.
+--------------------------------------------------------------------------
+
+
  **Note importante : Pour que tailwindcss s'actualise, utilisez la commande 'npm run watch'. Un petit inconvénient ici est que vous devrez recharger la page à chaque fois vous modifiez le style**
  
 ## Instructions d'installation
