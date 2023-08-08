@@ -42,6 +42,8 @@ Route::get('register', [CustomAuthController::class, 'create'])->name('register'
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('login', [CustomAuthController::class, 'authentication']);
 
+Route::middleware('auth')->group(function (){ 
+
 Route::get('/index', Index::class)->name('index');
 
 Route::get('/bottles', ManyBottles::class)->name('bottles');
@@ -50,7 +52,6 @@ Route::get('/cellars', ManyCellars::class)->name('cellars');
 
 /** route non fonctionnelle */
 Route::get('/wishlist', AddBottle::class)->name('wishlist');
-
 
 
 
@@ -108,3 +109,4 @@ Route::get('/wishlist', AddBottle::class)->name('wishlist');
 /////////////////////// Xavier ///////
 // Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
 // }); 
+});
