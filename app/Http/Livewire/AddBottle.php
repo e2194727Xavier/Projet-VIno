@@ -101,4 +101,10 @@ class AddBottle extends Component
         $this->vintage = '';
         $this->image = null;
     }
+
+
+    public function addBottle(){
+       
+   //ajouter le code pour ajouter une bouteille de la saq au cellier
+    }
 }
