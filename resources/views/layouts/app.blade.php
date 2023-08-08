@@ -11,11 +11,11 @@
 <body>
     @livewire('header')
 
-    <div class="h-screen">
+    <div>
         {{ $slot }}
     </div>
 
-    <!-- @livewire('footer') -->
+    @livewire('footer')
 
     @livewireScripts
 </body>

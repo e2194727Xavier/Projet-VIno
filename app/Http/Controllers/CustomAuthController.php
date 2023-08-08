@@ -102,6 +102,6 @@ class CustomAuthController extends Controller
             return redirect()->intended(route('bottles'));
         }
         // Redirection vers la page de connexion avec un message d'erreur en cas d'échec d'authentification
-        return redirect()->back()->withErrors('Courriel ou mot de passe invalide');
+         return redirect()->back()->withInput($request->except('password'))->withErrors('Courriel ou mot de passe invalide.');
     }
 }
