@@ -18,13 +18,19 @@ class BottleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+
+
+        public function index()
+{
+    $bottles = Bottle::all();
+    return view('bottle.index', ['bottles' => $bottles]);
+}
+
         // Aller chercher toutes les bouteilles
-        $bottles = Bottle::all();
-        return view('bottle.index');
+        // $bottles = Bottle::all();
+        // return view('bottle.index');
         // return response()->json(['success' => true, 'data' => $bottles])->header('Content-Type', 'application/json');
-    }
+    
 ///////////////////////////////////////////////////////////////////////////////
     /**
      * Rechercher une bouteille dans la BD

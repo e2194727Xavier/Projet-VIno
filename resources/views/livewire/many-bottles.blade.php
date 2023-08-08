@@ -4,3 +4,4 @@
         @endforeach
     <div class="col-span-2">{{ $bottles->links() }}</div>
 </div>
+

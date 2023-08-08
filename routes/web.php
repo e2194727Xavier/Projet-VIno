@@ -1,22 +1,24 @@
 <?php
 
- use App\Http\Controllers\BottleController;
- use App\Http\Controllers\CellarController;
- use Illuminate\Support\Facades\Route;
- use App\Http\Controllers\SAQController;
- 
- use App\Http\Livewire\SingleBottle;
- use App\Http\Livewire\SingleCellar;
+use Illuminate\Support\Facades\Route;
 
- use App\Http\Livewire\ManyBottles;
- use App\Http\Livewire\ManyCellars;
+use App\Http\Livewire\Index;
+use App\Http\Controllers\SAQController;
+use App\Http\Livewire\Bottles\UpdateBottle;
 
+use App\Http\Controllers\BottleController;
+use App\Http\Livewire\Bottles\AddBottle;
+use App\Http\Livewire\Bottles\SingleBottle;
+use App\Http\Livewire\Bottles\ManyBottles;
 
-use App\Http\Livewire\AddCellar;
-use App\Http\Livewire\AddBottle;
-use App\Http\Livewire\Home;
+use App\Http\Controllers\CellarController;
+use App\Http\Livewire\Cellars\AddCellar;
+use App\Http\Livewire\Cellars\SingleCellar;
+use App\Http\Livewire\Cellars\ManyCellars;
+
 use App\Http\Controllers\CustomAuthController;
-
+use App\Http\Livewire\Search\BottleAdvancedForm;
+use App\Http\Livewire\Search\SearchAdvancedResults;
 
 
 /*
@@ -30,49 +32,63 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
+/** routes fonctionnelles 29/07 */
+Route::get('/', function () {
+    return view('auth.welcome');
 });
 
-Route::middleware('auth')->group(function (){
-// À refaire avec LiveWire  N'oublier pas de mettre des commentaire en Français et le phpDoc aussi. 
-Route::get('/app', function () {
-    return view('layouts.app');
-});
+Route::post('register', [CustomAuthController::class, 'store']);
+Route::get('register', [CustomAuthController::class, 'create'])->name('register');
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('login', [CustomAuthController::class, 'authentication']);
 
-/////////////////////// Maryline ///////
+Route::middleware('auth')->group(function (){ 
 
+Route::get('/index', Index::class)->name('index');
 
-/////////////////////// Fin Maryline ///////
+Route::get('/bottles', ManyBottles::class)->name('bottles');
 
-
-/////////////////////// Farzad ///////
-Route::get('bottles',ManyBottles::class);
-Route::get('/bottles/{bottle_id}', SingleBottle::class);
 Route::get('/cellars', ManyCellars::class)->name('cellars');
 
+/** route non fonctionnelle */
+Route::get('/wishlist', AddBottle::class)->name('wishlist');
+
+
+
+
+
+
+
+    
+
+// Ancienne route du projet avant les vacances 
+
+/////////////////////// Farzad ///////
+//Route::get('bottles',ManyBottles::class)->name('bottles');
+// Route::get('/bottles/{bottle_id}', SingleBottle::class);
+// Route::get('/cellars', ManyCellars::class)->name('cellars');
+// Route::get('/bottle', BottleAdvancedForm::class)->name('bottle-advanced-form');
+// Route::get('/search', SearchAdvancedResults::class)->name('search-advanced-results');
 /////////////////////// Fin Farzad ///////
-
-
 
 /////////////////////// Camille ///////
 
-Route::get('formAddBottle', AddBottle::class);
+// Route::get('add-bottle', AddBottle::class)->name('add-bottle');
+// Route::get('wishlist', AddBottle::class)->name('wishlist');
 /////////////////////// Fin Camille ///////
-
 
 /////////////////////// Safoora //////////////////
 
-Route::get('update',[SaqController::class,'updateSAQ']);
+// Route::get('update',[SaqController::class,'updateSAQ']);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('bottles',ManyBottles::class)->name('bottles');
-Route::get('/bottles/{bottle_id}', SingleBottle::class);
+//  Route::get('bottles',ManyBottles::class)->name('bottles');
+// Route::get('/bottles/{bottle_id}', SingleBottle::class);
 
-Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
-Route::post('/add-cellar', [AddCellar::class, 'store'])->name('add-cellar.store');
+// Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
+// Route::post('/add-cellar', [AddCellar::class, 'store'])->name('add-cellar.store');
 
-Route::post('/add-cellar', [AddCellar::class, 'store']);
+// Route::post('/add-cellar', [AddCellar::class, 'store']);
 
 
 // Route::get('/update_bottle/{cellar_id}/{bottle_id}', UpdateBottle::class)->name('update_bottle');
@@ -80,27 +96,17 @@ Route::post('/add-cellar', [AddCellar::class, 'store']);
 
 //////////////////////////////////////////////////////////////////////////////////////
 //we have to delete these routes (just for guide)
-Route::get('cellar',[CellarController::class,'index']);
-Route::get('cellar',[CellarController::class,'store']);
+// Route::get('cellar',[CellarController::class,'index']);
+// Route::get('cellar',[CellarController::class,'store']);
 
-
-
-Route::post('addNewBottle',[BottleController::class,'addNewBottle']);
-Route::post('drinkBottleFromCellar',[BottleController::class,'drinkBottleFromCellar']);
-Route::post('addBottleToCellar',[BottleController::class,'addBottleToCellar']);
-Route::get('searchBottle',[BottleController::class,'searchBottle']);
+// Route::post('addNewBottle',[BottleController::class,'addNewBottle']);
+// Route::post('drinkBottleFromCellar',[BottleController::class,'drinkBottleFromCellar']);
+// Route::post('addBottleToCellar',[BottleController::class,'addBottleToCellar']);
+// Route::get('searchBottle',[BottleController::class,'searchBottle']);
 
 /////////////////////// Fin Safoora ///////
 
-
 /////////////////////// Xavier ///////
-Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
-Route::get('/home',Home::class)->name('home');
+// Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
+// }); 
 });
-
-
-
-Route::post('/register', [CustomAuthController::class, 'store']);
-Route::get('/register', [CustomAuthController::class, 'create'])->name('register');
-Route::get('login', [CustomAuthController::class,'index'])->name('login');
-Route::post('login', [CustomAuthController::class,'authentication']);
