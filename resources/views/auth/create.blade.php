@@ -3,9 +3,10 @@
 <head>
     <title>Registration Page</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="bg-gray-200">
-    <div class="max-w-md mx-auto mt-10 bg-white rounded-lg shadow-md p-6">
+    <div class="max-w-sm mx-auto mt-10 sm:max-w-md lg:max-w-lg xl:max-w-xl bg-white rounded-lg shadow-md p-6">
         <h1 class="text-2xl font-bold mb-6 text-center">Registration</h1>
 
         <form method="POST">
@@ -48,8 +49,8 @@
                 <input id="password_confirmation" type="password" name="password_confirmation" required class="border border-gray-300 rounded px-3 py-2 w-full" placeholder="Confirmation de mot de passe">
             </div>
 
-            <div class="flex justify-between items-center">
-                <button type="submit" class="bg-red text-white px-4 py-2 rounded">S'inscrire</button>
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <button type="submit" class="bg-red text-white px-4 py-2 rounded mb-2 sm:mb-0">S'inscrire</button>
                 <a href="{{ route('login') }}" class="text-red font-medium">Se connecter</a>
             </div>
 
