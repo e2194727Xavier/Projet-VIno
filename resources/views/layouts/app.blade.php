@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body>
-    @livewire('header')
 
-    <div>
+<body>
+
+    @livewire('layouts.header')
+
+    <div class="">
         {{ $slot }}
     </div>
 
-    @livewire('footer')
-
+    @livewire('layouts.footer')
     @livewireScripts
 </body>
 
