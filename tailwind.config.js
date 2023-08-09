@@ -1,11 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './resources/views/**/*.blade.php',
     './resources/js/**/*.js',
   ],
   theme: {
+    screens: {
+      'xxs': '320px',
+      // => @media (min-width: 320px) { ... }
+      'xs': '500px'
+    },
     extend: {
+     
       colors: {
         'dark-red': '#251322',
         'red-wine': '#9B0738',
@@ -26,7 +34,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
   ],
 }
 
