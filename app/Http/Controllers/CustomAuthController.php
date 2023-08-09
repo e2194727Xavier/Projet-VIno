@@ -18,10 +18,10 @@ class CustomAuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('auth.welcome');
-    }
+     public function index()
+     {
+         return view('auth.welcome');
+     }
 
 
     public function create()
@@ -97,6 +97,9 @@ class CustomAuthController extends Controller
 
             // Stockage des informations du cellier dans la session
             session()->put('cellar_inf', $cellarInf);
+
+            // Récupération des informations du cellier depuis la session
+            $cellarInf = session()->get('cellar_inf', []);
 
             // Redirection vers la page souhaitée après l'authentification réussie ou vers bottles par défaut
             return redirect()->intended(route('index'));
