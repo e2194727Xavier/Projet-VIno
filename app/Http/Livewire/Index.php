@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Livewire;
-
 use Livewire\Component;
 
 class Index extends Component
 {
+    public $user;
     public $cellar;
     //gestion du bouton modifier du cellier
     public $editing = false;
@@ -32,6 +32,7 @@ class Index extends Component
 
     public function render()
     {
+
         return view('livewire.Layouts.index', ['cellar' => $this->cellar]);
     }
 }
