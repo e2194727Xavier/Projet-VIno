@@ -10,7 +10,7 @@ class ManyBottles extends Component
     use WithPagination;
     public $search = '';
     public $component = 'bottles';
-
+    protected $paginationTheme = "simple-tailwind";
     // public function styles()
     // {
     //     return [
