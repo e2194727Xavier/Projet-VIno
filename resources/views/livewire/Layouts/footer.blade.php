@@ -31,9 +31,9 @@
             <!-- </button> -->
 
             <!-- Icône AddBottle -->
-            <!-- <button class='hover:bg-pale-pink flex flex-col items-center  p-2' wire:click="redirectToAddBottle"> -->
+            <button class='hover:bg-pale-pink flex flex-col items-center  p-2' wire:click="redirectToAddBottle">
             <!-- BLANCHE -->
-            <a href="/bottles" class='hover:bg-pale-pink flex flex-col items-center p-2'>
+            <!-- <a href="/bottles" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
                 <svg viewBox="-14 -7 80 67.5" class="w-10 h-10" xmlns="http://www.w3.org/2000/svg">
                     <path stroke='#fff' stroke-width='0.7' d="M21.087 0H2.913A2.917 2.917 0 0 0 0 2.913v18.174A2.917 2.917 0 0 0 2.913 24h18.174A2.917 2.917 0 0 0 24 21.087V2.913A2.917 2.917 0 0 0 21.087 0ZM22 21.087a.915.915 0 0 1-.913.913H2.913A.915.915 0 0 1 2 21.087V2.913A.915.915 0 0 1 2.913 2h18.174a.915.915 0 0 1 .913.913ZM51.087 0H32.913A2.917 2.917 0 0 0 30 2.913v18.174A2.917 2.917 0 0 0 32.913 24h18.174A2.917 2.917 0 0 0 54 21.087V2.913A2.917 2.917 0 0 0 51.087 0ZM52 21.087a.915.915 0 0 1-.913.913H32.913a.915.915 0 0 1-.913-.913V2.913A.915.915 0 0 1 32.913 2h18.174a.915.915 0 0 1 .913.913ZM21.087 30H2.913A2.917 2.917 0 0 0 0 32.913v18.174A2.917 2.917 0 0 0 2.913 54h18.174A2.917 2.917 0 0 0 24 51.087V32.913A2.917 2.917 0 0 0 21.087 30ZM22 51.087a.915.915 0 0 1-.913.913H2.913A.915.915 0 0 1 2 51.087V32.913A.915.915 0 0 1 2.913 32h18.174a.915.915 0 0 1 .913.913Z" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
                     <circle stroke='#fff' stroke-width='2' cx="53" cy="48.02" r="1" style="fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
@@ -53,7 +53,7 @@
                     <path stroke='#fff' stroke-width='1' d="M47 41h-4v-4a1 1 0 0 0-2 0v4h-4a1 1 0 0 0 0 2h4v4a1 1 0 0 0 2 0v-4h4a1 1 0 0 0 0-2Z" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
                 </svg>
                 <p class="text-xs">Bouteilles</p>
-            </a>
-            <!-- </button> -->
+            <!-- </a> -->
+            </button>
     </div>
 </div>

@@ -7,7 +7,7 @@
             <div style="position: absolute; top: 100%; left: 0; z-index: 10; background-color: white; border: 1px solid #ccc; border-radius: 4px; width: 100%;">
                 <ul style="list-style: none; padding: 0;">
                     @foreach($results as $result)
-                        <li wire:click="selectResult('{{ $result['name'] }}')" style="padding: 10px; border-bottom: 1px solid #ccc;">
+                        <li wire:click="selectResult('{{ $result['id'] }}')" style="padding: 10px; border-bottom: 1px solid #ccc;">
                             {{ $result['name'] }} - {{ $result['description'] }} - {{ $result['price'] }} - {{ $result['code_saq'] }}
                         </li>
                     @endforeach

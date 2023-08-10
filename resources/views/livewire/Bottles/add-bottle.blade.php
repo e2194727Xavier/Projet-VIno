@@ -1,4 +1,8 @@
 <div>
+    @livewire('bottles.bottle-search')
+    @if($selectedBottle)
+        @livewire('bottles.single-bottle', ['bottle_id' => $selectedBottle['id']])
+    @else
     <form wire:submit.prevent class='w-full p-4 bg-white shadow-lg rounded-lg'>
         @csrf
         <div class="space-y-12">
@@ -103,4 +107,5 @@
             </div>
         </div>
     </form>
+    @endif
 </div>

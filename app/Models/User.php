@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -44,7 +45,7 @@ class User extends Authenticatable
     ];
 
     public function cellars() {
-        return $this->hasMany(Cellar::class);
+        return $this->hasMany(Cellar::class, 'user_id');
     }
 
     public function cellar() {

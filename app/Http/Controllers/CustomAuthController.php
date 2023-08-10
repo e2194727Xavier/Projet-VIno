@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use App\Models\Cellar;
 use Exception;
@@ -39,6 +40,8 @@ class CustomAuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        // dd($request);
+
         try {
             $user = User::create([
                 'first_name' => $request->first_name,
@@ -47,10 +50,14 @@ class CustomAuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            Cellar::create([
+            // dd($user);
+
+            $cellar = Cellar::create([
                 'user_id' => $user->id,
                 'name' => 'Cellier 1'
             ]);
+
+            // dd($cellar);
 
             DB::commit();
 
@@ -58,6 +65,7 @@ class CustomAuthController extends Controller
             return redirect(route('login'))->withSuccess('Votre compte a été créé avec succès!');
         } catch (Exception $e) {
             //throw $e -> ceci est pour nous seulement, pour debugger
+            Log::error('An error occurred: ' . $e->getMessage());
             DB::rollBack();
             return back()->withError('Une erreur est survenue. Veuillez réessayer.');
         }
