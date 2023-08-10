@@ -23,8 +23,8 @@ class AddCellar extends Component
     public function store()
     {
         $this->validate();
-        $userId=2;
-        // $userId = Auth::check() ? Auth::id() : null;
+
+        $userId = Auth::check() ? Auth::id() : null;
 
         Cellar::create([
             'name' => $this->nom,
@@ -38,6 +38,6 @@ class AddCellar extends Component
 
     public function render()
     {
-        return view('livewire.add-cellar')->layout('layouts.app');
+        return view('livewire.Cellars.add-cellar');
     }
 }
