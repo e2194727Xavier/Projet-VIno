@@ -6,7 +6,7 @@ use Livewire\Component;
 class Index extends Component
 {
     public $user;
-    public $cellar;
+    public $cellars;
     //gestion du bouton modifier du cellier
     public $editing = false;
 
@@ -24,15 +24,22 @@ class Index extends Component
         $this->editing = false;
     }
 
+    public function handleChange($value) {
+        $this->emit('inputChanged', $value); 
+     
+    }
+    
+
     public function mount()
     {
         // Récupérer les informations du cellier depuis la session ou autre source
-        $this->cellar = session('cellar_inf', []);
+        $this->cellars = session('cellar_inf');
+      /*   dd($this->cellar); */
     }
 
     public function render()
     {
 
-        return view('livewire.Layouts.index', ['cellar' => $this->cellar]);
+        return view('livewire.Layouts.index', ['cellars' => $this->cellars]);
     }
 }

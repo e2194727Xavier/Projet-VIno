@@ -1,1 +1,1 @@
-<button class="{{ $class }}">{{ $label }}</button>
+<button class="{{ $class }}" wire:click= "{{ $action }}" >{{ $label }}</button>
