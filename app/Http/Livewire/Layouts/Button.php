@@ -19,6 +19,7 @@ class Button extends Component
     public function handleClick()
     {
         // coder la fonction handleClick
+       
     }
 
     public function render()

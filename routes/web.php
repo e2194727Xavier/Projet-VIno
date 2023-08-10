@@ -107,6 +107,6 @@ Route::get('/wishlist', AddBottle::class)->name('wishlist');
 /////////////////////// Fin Safoora ///////
 
 /////////////////////// Xavier ///////
-// Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
+Route::get('/singleCellar/{cellar_id}',SingleCellar::class)->name('singleCellar');
 // }); 
 });

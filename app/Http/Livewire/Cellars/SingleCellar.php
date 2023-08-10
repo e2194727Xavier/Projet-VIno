@@ -60,6 +60,6 @@ class SingleCellar extends Component
             $query->whereNull('bottle_in_cellars.deleted_at');
         }])->where('id', $this->cellarId)->first();
     
-        return view('livewire.single-cellar', ['cellar' => $this->cellar]);
+        return view('livewire.Cellars.single-cellar', ['cellar' => $this->cellar]);
     }    
 }

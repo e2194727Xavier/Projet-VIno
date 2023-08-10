@@ -4,13 +4,8 @@
 
     <!-- Section pour afficher le cellier de l'utilisateur boucle pour les celliers de lutilisateur many-cellars-->
 
-    <h2 class="my-4 font-bold text-lg">Mes Celliers</h2>
-    <div class="border-2 border-gold rounded-lg items-center p-2 flex justify-between">
-        
-        <p class="uppercase">{{ $cellar['name'] ?? '' }}</p>
-        @livewire('layouts.button', ['label' => 'Modifier', 'class' => 'uppercase font-semibold text-sm bg-gold rounded-lg p-2'])
-    </div>
-
+    @livewire('cellars.many-cellars')
+    
     <!-- section a ajouter tant et aussi longtemps que le premier cellier naura pas été renommé ? 
      si le nom du cellier nest pas changer faire apparaitre ce message else, faire apparaitre les celliers de lusager-->
 

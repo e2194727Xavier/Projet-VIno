@@ -1,7 +1,13 @@
-@if($renamingInProgress)
-<p>Le changement de nom est en cours...</p>
-@endif
+
+@if($showInput)
 @livewire('layouts.button', 
-['label' => 'Renommer mon cellier 1',
- 'class' => 'uppercase bg-gold  rounded-lg items-center px-4 py-8',
- 'action' =>'rename',])
+    ['label' => 'Enregistrer',
+     'class' => 'uppercase font-semibold text-sm bg-gold rounded-lg p-2',
+     'action' =>'rename'])
+@elseif(!$showInput)
+    @livewire('layouts.button', 
+    ['label' => 'renommer',
+     'class' => 'uppercase font-semibold text-sm bg-gold rounded-lg p-2',
+     'action' =>'startRename'])
+@endif
+
