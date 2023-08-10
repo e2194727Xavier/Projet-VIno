@@ -21,12 +21,10 @@
          TODO: handle click sur les boutons
          -->
     <section class="flex justify-between gap-3 my-6 font-bold text-sm">
-        @livewire('rename-cellar')
+        @livewire('layouts.button', ['label' => 'Renommer mon cellier 1', 'class' => 'uppercase bg-gold  rounded-lg items-center px-4 py-8'])
 
-        @livewire('layouts.button', ['label' => 'Ajouter un Cellier', 'class'=>'uppercase bg-gold   rounded-lg items-center px-4 py-8'])
-
-        <!-- utilisation du lien pour la liste des bouteilles -->
-        <a href="/bottles" class="bg-gold rounded-lg px-4 py-8 text-center uppercase">Catalogue des bouteilles</a>
+        <a href="{{ route('add-cellar') }}" class="bg-gold rounded-lg px-4 py-8 text-center ">Ajouter un cellier</a>        <!-- utilisation du lien pour la liste des bouteilles -->
+        <a href="{{ route('bottles') }}" class="bg-gold rounded-lg px-4 py-8 text-center ">Catalogue des bouteilles</a>
        
 
     </section>
