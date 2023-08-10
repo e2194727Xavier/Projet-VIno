@@ -34,6 +34,11 @@ class AddBottle extends Component
     public $image;
     public $url_image;
 
+    // donnée venant de bottleSearch et l'écouteur d'évènement déclenchée à la sélection d'une bouteille
+    public $selectedBottle;
+    protected $listeners = ['resultSelected' => 'onResultSelected'];
+
+    // messages de validation liés aux champs
     protected $messages = [
         'name.required' => 'Le champ nom est obligatoire.',
         'name.string' => 'Le champ nom doit être une chaîne de caractères.',
@@ -53,7 +58,13 @@ class AddBottle extends Component
 
     public function render()
     {
-        return view('livewire.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types]);
+        return view('livewire.bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types]);
+    }
+
+    public function onResultSelected($selectedBottle)
+    {
+        // dd($selectedBottle);
+        $this->selectedBottle = $selectedBottle;
     }
 
     public function saveUnlistedBottle()

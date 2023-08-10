@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Bottles;
 use Livewire\Component;
 use App\Models\Bottle;
+use Illuminate\Support\Facades\Auth;
 
 class SingleBottle extends Component
 {
@@ -19,9 +20,29 @@ class SingleBottle extends Component
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar=session('cellar_inf');
+        // dd($cellar);
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', ['bottle' => $this->bottle]);
+    }
+
+    public function addToCellar()
+    {
+        $user = Auth::user();
+        $selectedBottle = $this->bottle;
+        // dd($user->cellars);
+        // dd(session('cellar_inf'));
+    
+        if ($user) {
+            $firstCellar = $user->cellars->first(); // Get the first cellar
+    
+            if ($firstCellar) {
+                // $firstCellar->bottles()->attach($selectedBottle->id);
+    
+                // Optionally, you can add quantity to the pivot table if needed
+                $firstCellar->bottles()->attach($selectedBottle->id, ['quantity' => 1]);
+            }
+        }
     }
 }
 

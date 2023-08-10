@@ -10,6 +10,7 @@ class BottleSearch extends Component
     use WithPagination;
     public $search = '';
     public $results = [];
+    public $selectedBottle;
     
     public function fetchResults()
         {
@@ -59,11 +60,16 @@ class BottleSearch extends Component
             $this->fetchResults();
         }
 
-    public function selectResult($result)
+    public function selectResult($resultId)
         {
-            $this->search = $result;
+            $selectedBottle = Bottle::find($resultId);
+            $this->search = $selectedBottle->name;
             $this->results = [];
-            $this->emit('resultSelected', $result);
+            // $this->selectedBottle = $bottle;
+
+            // dd($selectedBottle);
+        
+            $this->emit('resultSelected', $selectedBottle);
         }
         
     public function handleSearch()
@@ -74,7 +80,7 @@ class BottleSearch extends Component
 
     public function render()
         {
-            return view('livewire.bottle-search');
+            return view('livewire.bottles.bottle-search');
         }
 
 }
