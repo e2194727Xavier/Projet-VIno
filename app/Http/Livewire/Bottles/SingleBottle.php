@@ -21,7 +21,7 @@ class SingleBottle extends Component
         $cellar=session('cellar_inf');
         $this->bottle = Bottle::find($this->bottleId);
 
-        return view('livewire.single-bottle', ['bottle' => $this->bottle]);
+        return view('livewire.Bottles.single-bottle', ['bottle' => $this->bottle]);
     }
 }
 

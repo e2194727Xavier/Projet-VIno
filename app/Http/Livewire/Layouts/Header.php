@@ -10,6 +10,8 @@ class Header extends Component
     {
         $this->user = auth()->user(); // pour avoir acces au données de l'utilisateur connecté 
         // Si on veut ajouter des choses par exemple les bouteilles vu ou peu immporte session()->put('ma_variable', $maValeur)
+
+    
         return view('livewire.Layouts.header');
     }
 

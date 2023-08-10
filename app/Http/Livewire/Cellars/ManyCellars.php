@@ -13,12 +13,20 @@ class ManyCellars extends Component
 
     protected $listeners = ['searchPerformed'];
 
-    public function mount()
+   /*  public function mount()
     {
         $this->loadCellars();
+    } */
+
+    
+    public function mount()
+    {
+        
+        $this->cellars = session('cellar_inf');
+      
     }
 
-    public function loadCellars()
+   /*  public function loadCellars()
     {
         if (!empty($this->search)) {
             $this->cellars = Cellar::where('name', 'LIKE', '%' . $this->search . '%')->get();
@@ -26,7 +34,7 @@ class ManyCellars extends Component
             $this->cellars = Cellar::all();
         }
     }
-
+ */
     public function render()
     {
         return view('livewire.Cellars.many-cellars', ['cellars' => $this->cellars]);

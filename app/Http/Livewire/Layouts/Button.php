@@ -7,16 +7,19 @@ class Button extends Component
 {
     public $label;
     public $class;
+    public $action;
 
-    public function mount($label = 'Envoyer', $class = 'btn btn-primary')
+    public function mount($label = 'Envoyer', $class = 'btn btn-primary', $action = "")
     {
         $this->label = $label;
         $this->class = $class;
+        $this->action = $action; 
     }
 
     public function handleClick()
     {
         // coder la fonction handleClick
+       
     }
 
     public function render()

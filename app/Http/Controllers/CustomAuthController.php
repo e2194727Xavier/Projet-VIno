@@ -82,24 +82,31 @@ class CustomAuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             // À utiliser plus tard
-            /*    $cellarInf = $user->cellars->pluck('name','id')->toArray();
+             /*   $cellarInf = $user->cellars->pluck('name','id')->toArray();
             $ids = array_keys($cellarInf);
             $names = array_values($cellarInf); */
 
+            $cellarInf = $user->cellars->map(function ($cellar) {
+                return [
+                    'id' => $cellar->id,
+                    'name' => $cellar->name
+                ];
+            })->toArray();
+
             // Récupération du premier cellier de l'utilisateur
-            $cellar = $user->cellars->first();
+        /*     $cellar = $user->cellars->first(); */
 
             // Création du tableau contenant les informations du cellier
-            $cellarInf = [
-                'id' => $cellar->id,
-                'name' => $cellar->name
+          /*   $cellarInf = [
+                'ids' => $ids,
+                'names' => $names
             ];
-
+ */
             // Stockage des informations du cellier dans la session
             session()->put('cellar_inf', $cellarInf);
 
             // Récupération des informations du cellier depuis la session
-            $cellarInf = session()->get('cellar_inf', []);
+            
 
             // Redirection vers la page souhaitée après l'authentification réussie ou vers bottles par défaut
             return redirect()->intended(route('index'));
