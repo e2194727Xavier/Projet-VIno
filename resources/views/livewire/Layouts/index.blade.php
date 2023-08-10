@@ -6,6 +6,7 @@
 
     <h2 class="my-4 font-bold text-lg">Mes Celliers</h2>
     <div class="border-2 border-gold rounded-lg items-center p-2 flex justify-between">
+        
         <p class="uppercase">{{ $cellar['name'] ?? '' }}</p>
         @livewire('layouts.button', ['label' => 'Modifier', 'class' => 'uppercase font-semibold text-sm bg-gold rounded-lg p-2'])
     </div>
@@ -25,7 +26,7 @@
          TODO: handle click sur les boutons
          -->
     <section class="flex justify-between gap-3 my-6 font-bold text-sm">
-        @livewire('layouts.button', ['label' => 'Renommer mon cellier 1', 'class' => 'uppercase bg-gold  rounded-lg items-center px-4 py-8'])
+        @livewire('rename-cellar')
 
         @livewire('layouts.button', ['label' => 'Ajouter un Cellier', 'class'=>'uppercase bg-gold   rounded-lg items-center px-4 py-8'])
 

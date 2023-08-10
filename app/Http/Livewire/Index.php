@@ -27,7 +27,8 @@ class Index extends Component
     public function mount()
     {
         // Récupérer les informations du cellier depuis la session ou autre source
-        $this->cellar = session('cellar_inf', []);
+        $this->cellar = session('cellar_inf');
+      /*   dd($this->cellar); */
     }
 
     public function render()
