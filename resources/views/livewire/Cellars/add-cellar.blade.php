@@ -15,7 +15,7 @@
 
         @livewire('layouts.button', ['label' => 'Ajouter', 'class' => 'bg-gold rounded-lg items-center px-4 py-2 my-4'])
         </form>
-        <a href="{{ route('cellars') }}" class="text-sm mt-6 underline">Voir mes celliers</a>
+        <a href="{{ route('index') }}" class="text-sm mt-6 underline">Voir mes celliers</a>
         <a href="{{ route('add-bottle') }}" class="text-sm mt-6 underline">Ajouter une bouteille</a>
     </div>
 </div>
