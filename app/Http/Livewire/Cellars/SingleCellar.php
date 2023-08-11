@@ -50,7 +50,7 @@ class SingleCellar extends Component
     // Recupère l'id dans le URL de la page directement à l'ouverture
     public function mount($cellar_id)
     {
-        $this->cellarId = $cellar_id;
+        $this->cellar = session('cellar_inf', []);
     }
 
     
