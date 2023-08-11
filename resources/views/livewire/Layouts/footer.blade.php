@@ -15,7 +15,7 @@
         </button>
 
 
-        <!-- ICÔNE WISHLIST en commentaire car ne fonctionne pas encore -->
+        <!-- ICÔNE WISHLIST en commentaire car ne fonctionne pas encore en commentaire car ne fonctionne pas encore -->
         <!-- <button class='hover:bg-pale-pink flex flex-col items-center p-2' wire:click="redirectToWishlist"> -->
             <!-- BLANCHE -->
             <!-- <a href="/wishlist" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
@@ -39,9 +39,8 @@
             <!-- </a> -->
         </button>
 
-        <!-- Icône ADDBOTTLE -->
-        <!-- Icône ADDBOTTLE -->
-        <button class='hover:bg-pale-pink flex flex-col items-center px-2 w-1/3 ' wire:click="redirectToAddBottle">
+        <!-- Icône AddBottle -->
+        <button class='hover:bg-pale-pink flex flex-col items-center  p-2' wire:click="redirectToAddBottle">
             <!-- BLANCHE -->
             <!-- <a href="/bottles" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
             <svg viewBox="-14 -7 80 67.5" class="w-10 h-10" xmlns="http://www.w3.org/2000/svg">

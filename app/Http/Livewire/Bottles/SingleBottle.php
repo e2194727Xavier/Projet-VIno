@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Bottles;
 
+
 use Livewire\Component;
 use App\Models\Bottle;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,10 @@ class SingleBottle extends Component
     public $bottleId;
     public $bottle;
     public $showQuantity = false;
+    public $showQuantity = false;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $showQuantity = false)
+    public function mount($bottle_id, $showQuantity = false, $showQuantity = false)
     {
         $this->bottleId = $bottle_id;
         $this->showQuantity = $showQuantity;
@@ -45,7 +47,11 @@ class SingleBottle extends Component
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', [
+            
             'bottle' => $this->bottle,
+            'showQuantity' => $this->showQuantity,
+            'quantityInCellar' => $this->quantity
+        ,
             'showQuantity' => $this->showQuantity,
             'quantityInCellar' => $this->quantity
         ]);
