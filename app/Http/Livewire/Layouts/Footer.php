@@ -15,16 +15,32 @@ class Footer extends Component
         return redirect($url);
     }
 
-    public function redirectToCellars()
+    public function redirectToIndex()
     {
-        $url = route('cellars');
+        $url = route('index');
         return redirect($url);
     }
 
-    public function redirectToWishlist()
+    public function redirectToCatalogue()
     {
-        $url = route('wishlist');
+        $url = route('bottles');
         return redirect($url);
     }
+    
+
+    // public function redirectToCellars()
+    // {
+    //     $url = route('cellars');
+    //     return redirect($url);
+    // }
+
+    // public function redirectToWishlist()
+    // {
+    //     $url = route('wishlist');
+    //     return redirect($url);
+    // }
+    
+
+
 }
 
