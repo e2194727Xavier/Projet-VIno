@@ -12,10 +12,9 @@ class SingleBottle extends Component
     public $bottleId;
     public $bottle;
     public $showQuantity = false;
-    public $showQuantity = false;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $showQuantity = false, $showQuantity = false)
+    public function mount($bottle_id, $showQuantity = false)
     {
         $this->bottleId = $bottle_id;
         $this->showQuantity = $showQuantity;
