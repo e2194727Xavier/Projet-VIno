@@ -11,17 +11,32 @@ class SingleCellar extends Component
     public $cellarId;
     public $cellar;
     public $count;
-    protected $listeners = ['bottleDeleted' => 'handleBottleDeleted'];
-
-
-    public $editing = false;
-
-
-    public function toggleEditing()
-    {
-        $this->editing = !$this->editing;
-    }
+    public $newName;
+    protected $listeners = ['bottleDeleted' => 'handleBottleDeleted', 'updateCellarName' => 'updateName'];
   
+
+    public $editing ;
+
+      // Recupère l'id dans le URL de la page directement à l'ouverture
+      public function mount($cellar_id)
+      {
+          $this->cellarId = $cellar_id;
+      }
+
+
+      
+    
+    public function updateName($newName){
+        $this->newName = $newName;
+
+        $this->validate([
+            'newName' => 'required|max:100', 
+        ]);
+        $cellar = Cellar::findOrFail($this->cellarId);
+        $cellar->name = $this->newName;
+        $cellar->save();
+        
+    }
     
 
     public function handleBottleDeleted()
@@ -58,11 +73,7 @@ class SingleCellar extends Component
         }
     }
 
-    // Recupère l'id dans le URL de la page directement à l'ouverture
-    public function mount($cellar_id)
-    {
-        $this->cellarId = $cellar_id;
-    }
+  
 
     
     public function render()
