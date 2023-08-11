@@ -17,13 +17,11 @@ class SingleCellar extends Component
 
     public $editing ;
 
-      // Recupère l'id dans le URL de la page directement à l'ouverture
-      public function mount($cellar_id)
-      {
-          $this->cellarId = $cellar_id;
-      }
-
-
+    // Recupère l'id dans le URL de la page directement à l'ouverture
+    public function mount($cellar_id)
+    {
+        $this->cellarId = $cellar_id;
+    }
       
     
     public function updateName($newName){
@@ -47,14 +45,6 @@ class SingleCellar extends Component
         }])->where('id', $this->cellarId)->first();
     }
 
-
-    // Recupère l'id dans le URL de la page directement à l'ouverture
-    public function mount($cellar_id)
-    {
-        $this->cellarId = $cellar_id;
-    }
-
-    
     public function render()
     {
         $this->cellar = Cellar::with(['bottles' => function ($query) {
