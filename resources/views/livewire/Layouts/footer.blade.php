@@ -1,8 +1,8 @@
 <div class="sticky bottom-0 w-full left-0 right-0 flex items-center">
     <div class="justify-around flex w-full text-white bg-red-wine py-2">
 
-        <!-- icone retour a l'acceuil  -->
-        <button class='hover:bg-pale-pink flex flex-col items-center  px-2 w-1/3' wire:click="redirectToWishlist">
+        <!-- icone redirection vers catalogue  -->
+        <button class='hover:bg-pale-pink flex flex-col items-center  px-2 w-1/3' wire:click="redirectToCatalogue">
             <!-- <a href="/index" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
             <svg viewBox="4 -7 90 112.5" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg">
                 <g data-name="Layer 2" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -1.7763568394002505e-15, 0)">

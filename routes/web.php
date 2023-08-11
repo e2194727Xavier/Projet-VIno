@@ -64,7 +64,7 @@ Route::get('/wishlist', AddBottle::class)->name('wishlist');
 // Ancienne route du projet avant les vacances 
 
 /////////////////////// Farzad ///////
-//Route::get('bottles',ManyBottles::class)->name('bottles');
+Route::get('bottles',ManyBottles::class)->name('bottles');
 // Route::get('/bottles/{bottle_id}', SingleBottle::class);
 // Route::get('/cellars', ManyCellars::class)->name('cellars');
 Route::get('/bottle', BottleAdvancedForm::class)->name('bottle-advanced-form');

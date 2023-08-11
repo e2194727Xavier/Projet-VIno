@@ -26,5 +26,9 @@ class Footer extends Component
         $url = route('wishlist');
         return redirect($url);
     }
+
+    public function redirectToCatalogue(){
+        return redirect()->route('bottles');
+    }
 }
 
