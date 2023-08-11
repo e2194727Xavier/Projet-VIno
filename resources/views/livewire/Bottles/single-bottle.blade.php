@@ -2,7 +2,7 @@
     
             <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="max-w-80">
     
-            <div class="flex flex-col justify-end items-end p-4  sm:flex-row sm:justify-between sm:gap-4">
+            <div class="flex flex-col justify-end items-end p-4  sm:flex-row sm:justify-between sm:gap-4 grow w-full">
                 <h1 class="text-right font-bold font-roboto">{{ $bottle->name }}</h1>
                 <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
                 <!-- @if(session('cellar_inf')) @endif-->
