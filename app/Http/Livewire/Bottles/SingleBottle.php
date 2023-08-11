@@ -28,10 +28,10 @@ class SingleBottle extends Component
             // }
             $cellar = session('cellar_inf');
             // $cellar = Cellar::find($cellarId);
-            $bottle = $cellar->bottles->find($bottle_id);
+            // $bottle = $cellar->bottles->find($bottle_id);
             
-            $quantityInCellar = $bottle->pivot->quantity ?? 0;
-            dd($quantityInCellar);
+            // $quantityInCellar = $bottle->pivot->quantity ?? 0;
+            // dd($quantityInCellar);
         } else {
             $this->quantity = 1;
         }
