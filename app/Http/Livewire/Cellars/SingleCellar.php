@@ -50,7 +50,7 @@ class SingleCellar extends Component
     // Recupère l'id dans le URL de la page directement à l'ouverture
     public function mount($cellar_id)
     {
-        $this->cellar = session('cellar_inf', []);
+        $this->cellarId = $cellar_id;
     }
 
     
@@ -59,6 +59,7 @@ class SingleCellar extends Component
         $this->cellar = Cellar::with(['bottles' => function ($query) {
             $query->whereNull('bottle_in_cellars.deleted_at');
         }])->where('id', $this->cellarId)->first();
+    
     
         return view('livewire.Cellars.single-cellar', ['cellar' => $this->cellar]);
     }    
