@@ -10,11 +10,11 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col">
 
     @livewire('layouts.header')
 
-    <div class="">
+    <div class="flex-1">
         {{ $slot }}
     </div>
 
