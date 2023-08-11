@@ -22,7 +22,9 @@ class ManyCellars extends Component
     public function mount()
     {
         
-        $this->cellars = session('cellar_inf');
+       /*  $this->cellars = session('cellar_inf'); */
+       $userId = auth()->id();
+       $this->cellars = Cellar::where('user_id', $userId)->get();       
       
     }
 

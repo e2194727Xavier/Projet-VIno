@@ -101,6 +101,7 @@ class CustomAuthController extends Controller
                 ];
             })->toArray();
 
+         /*    dd($cellarInf); */
             // Récupération du premier cellier de l'utilisateur
         /*     $cellar = $user->cellars->first(); */
 

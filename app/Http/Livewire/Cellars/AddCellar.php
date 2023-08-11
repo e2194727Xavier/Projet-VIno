@@ -25,14 +25,25 @@ class AddCellar extends Component
         $this->validate();
 
         $userId = Auth::check() ? Auth::id() : null;
-
+       
         Cellar::create([
             'name' => $this->nom,
             'user_id' => $userId
         ]);
+  
+       
+        $cellarInf = Cellar::where('user_id', $userId)->get()->map(function ($cellar) {
+            return [
+                'id' => $cellar->id,
+                'name' => $cellar->name,
+            ];
+        })->toArray();
 
-        session()->flash('message', 'Cellier ajouté avec succès.');
-
+        session()->put('cellar_inf', $cellarInf);
+        $cellarInf =  session()->get('cellar_inf');
+      
+        dd($cellarInf);
+        session()->flash('message', 'Cellier ajouté avec succès.');      
         $this->reset('nom');
     }
 

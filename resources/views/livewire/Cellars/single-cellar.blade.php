@@ -1,5 +1,19 @@
 <div class="p-6 h-screen">
-    <h1 class="text-3xl font-bold mb-4">{{ $cellar->name }}</h1>
+<div x-data="{ editing: false, newName: '{{ $cellar->name }}' }">
+    <div x-show="!editing">
+        <h1 class="text-3xl font-bold mb-4">{{ $cellar->name }}</h1>
+        <button class="text-right" @click="editing = true">Modifier</button>
+    </div>
+    
+    <div x-show="editing">
+        <input x-model="newName" type="text" />
+        <button @click="editing = false; Livewire.emit('updateCellarName', newName)">Sauvegarder</button>
+        <button @click="editing = false">Annuler</button>
+    </div>
+</div>
+
+
+
     <h2 class="text-xl font-semibold mb-2">Bouteilles:</h2>
     <ul class="grid grid-cols-1 gap-4">
       

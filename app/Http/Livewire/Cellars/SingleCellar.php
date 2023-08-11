@@ -13,6 +13,17 @@ class SingleCellar extends Component
     public $count;
     protected $listeners = ['bottleDeleted' => 'handleBottleDeleted'];
 
+
+    public $editing = false;
+
+
+    public function toggleEditing()
+    {
+        $this->editing = !$this->editing;
+    }
+  
+    
+
     public function handleBottleDeleted()
     {
         // refresh the list of bottles by re-fetching the cellar
