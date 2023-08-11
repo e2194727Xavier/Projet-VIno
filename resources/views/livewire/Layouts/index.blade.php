@@ -1,13 +1,13 @@
 <section class="mx-4 my-4 flex flex-col justify-center gap-4 font-roboto ">
 
-    <h1 class="mb-2 font-roboto font-bold text-xl">Votre vin, à portée de main.</h1>
+    <h1 class="mb-2 font-roboto font-bold text-xl text-center">Votre vin, à portée de main.</h1>
 
     <!-- Section pour afficher le cellier de l'utilisateur boucle pour les celliers de lutilisateur many-cellars-->
 
     @livewire('cellars.many-cellars')
 
     <!-- ceci apparaitra tant que l'usager n'a qu'un cellier -->
-    @if(count($cellars) < 1) 
+    @if(count($cellars) < 2) 
     <section class="my-6 ">
         <p class="mb-2 font-roboto font-bold text-lg">Votre premier cellier est créer!</p>
         <p class="">Vous pouvez parcourir le catalogue de nos bouteilles ou utiliser l'outil de recherche </p>
