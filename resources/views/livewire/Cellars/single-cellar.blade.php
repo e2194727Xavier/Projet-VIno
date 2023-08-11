@@ -11,8 +11,8 @@
 </div> -->
 <div  x-data="{ editing: false, newName: '{{ $cellar->name }}' }">
     <div class="flex items-center justify-between">
-        <h1 class="text-3xl font-bold mb-4" x-show="!editing">{{ $cellar->name }}</h1>
-        <input x-show="editing" x-model="newName" type="text" class="text-3xl font-bold mb-4 w-20 mr-2" />
+        <h1 class="text-2xl font-bold mb-4" x-show="!editing">{{ $cellar->name }}</h1>
+        <input x-show="editing" x-model="newName" type="text" class="text-xl font-bold mb-4  mr-2" />
         <button class="ml-2" @click="editing = true" x-show="!editing">Modifier</button>
     </div>
     
