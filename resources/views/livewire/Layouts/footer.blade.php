@@ -1,5 +1,5 @@
 <div class="sticky bottom-0 w-full left-0 right-0 flex items-center">
-    <div class="justify-around flex w-full text-white bg-red-wine py-2">
+    <div class="justify-around flex w-full text-white bg-red-wine py-2 px-2">
 
         <!-- icone redirection vers catalogue  -->
         <button class='hover:bg-pale-pink flex flex-col items-center  px-2 w-1/3' wire:click="redirectToCatalogue">

@@ -3,7 +3,6 @@
     * la barre de recher s'affiche et fonctionne 
     * aucun design
 -->
-<!-- <div class="mt-6"> -->
 <div>
     @error('cellars')
     <div class="text-red-500">{{ $message }}</div>
