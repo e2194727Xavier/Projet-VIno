@@ -6,7 +6,7 @@
         @foreach($cellar->bottles as $bottle)
             <li class="bg-white p-4 shadow-md rounded-md flex justify-around	 items-center">
                 <div>
-                    @livewire('single-bottle', ['bottle_id' => $bottle->id])
+                    @livewire('bottles.single-bottle', ['bottle_id' => $bottle->id])
                 </div>
                 <div class="flex flex-col p-3 space-y-2.5 items-center ">
                     <p class="text-sm text-gray-500 mb-4">Quantité: {{ $bottle->pivot->quantity }}</p>
@@ -26,12 +26,12 @@
                     </div>
                     
                     <a href="{{ route('update_bottle', ['cellar_id' => $cellar->id,'bottle_id' => $bottle->id]) }}"  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                         @livewire('button', ['label' => 'modifier cellier'])
+                         @livewire('layouts.button', ['label' => 'modifier cellier'])
                     </a>
 
                     <div class="py-2">
                   
-                      @livewire('delete-bottle', ['bottleId' =>$bottle->id, 'cellarId' => $cellar->id])
+                      @livewire('bottles.delete-bottle', ['bottleId' =>$bottle->id, 'cellarId' => $cellar->id])
 
                     </div>
                 </div>

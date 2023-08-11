@@ -26,7 +26,7 @@ class DeleteBottle extends Component
 
     public function render()
     {
-        return view('livewire.delete-bottle');
+        return view('livewire.Bottles.delete-bottle');
     }
     
     protected $listeners = ['bottleDeleted' => 'handleBottleDeleted'];
