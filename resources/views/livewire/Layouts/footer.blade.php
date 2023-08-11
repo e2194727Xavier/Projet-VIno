@@ -1,5 +1,5 @@
 <div class="sticky bottom-0 w-full left-0 right-0 flex items-center ">
-    <div class="justify-around flex w-full text-white bg-red-wine">
+    <div class="justify-around flex w-full text-white bg-red-wine py-2 px-2">
 
         <!-- ICÔNE CATALOGUE  -->
         <button class='hover:bg-pale-pink flex flex-col items-center  px-2 w-1/3' wire:click="redirectToCatalogue">
@@ -10,7 +10,7 @@
                     <path stroke='#fff' stroke-width='0.8' d="M85.856 80.36a1.5 1.5 0 0 0 1.5-1.5V67.636a1.5 1.5 0 0 0-1.5-1.5H70.271a1.5 1.5 0 0 0-1.5 1.5V78.86a1.5 1.5 0 0 0 1.5 1.5ZM71.771 69.136h12.585v8.224H71.771ZM10.448 92.064h17.306a1.5 1.5 0 1 0 0-3H10.448A1.45 1.45 0 0 1 9 87.616V76.483h13.546a1.5 1.5 0 0 0 1.5-1.5V50.842a1.5 1.5 0 0 0-1.5-1.5H11.3c5.136-11.833 4.427-17.9 4.2-19.114V12.791a1.857 1.857 0 0 1 1.855-1.855h5.49a1.857 1.857 0 0 1 1.855 1.855v12.2h-4.4a1.5 1.5 0 0 0 0 3h4.4v2.231c-.191.973-.673 4.833 1.616 12.218a1.5 1.5 0 0 0 2.865-.888c-2.279-7.356-1.532-10.781-1.528-10.8a1.511 1.511 0 0 0 .047-.372V12.791a4.861 4.861 0 0 0-4.855-4.855h-5.49a4.861 4.861 0 0 0-4.855 4.855v17.588a1.626 1.626 0 0 0 .043.355c.013.054 1.18 5.487-4 17.417A30.517 30.517 0 0 0 6 60.366v27.25a4.454 4.454 0 0 0 4.448 4.448Zm10.6-18.581H9V60.366a27.4 27.4 0 0 1 1.2-8.024h10.846Z" style="fill: rgb(255, 255, 255); paint-order: stroke;" />
                 </g>
             </svg>
-            <p class="text-xs">Catalogue</p>
+            <p class="text-xs">Catalogue des bouteilles</p>
             <!-- </a> -->
         </button>
 
@@ -28,19 +28,19 @@
         </button> -->
 
         <!-- ICÔNE CELLIERS -->
-        <button class="flex flex-col items-center p-2" wire:click="redirectToIndex">
+        <button class="flex flex-col items-center px-2 w-1/3" wire:click="redirectToIndex">
             <!-- BLANCHE -->
             <!-- <a href="/cellars" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
 
             <svg viewBox="-20 -7 85 80" class="w-8 h-8 " xmlns="http://www.w3.org/2000/svg">
                 <path stroke='#fff' stroke-width='1' d="M23 0c12.702549 0 23 10.297451 23 23v42c0 .552285-.447715 1-1 1H1c-.552285 0-1-.447715-1-1V23C0 10.297451 10.297451 0 23 0Zm21 24v-1c0-11.59798-9.40202-21-21-21S2 11.40202 2 23v31h7v-9c0-.552285.447715-1 1-1h8v-9c0-.552285.447715-1 1-1h8v-9c0-.552285.447715-1 1-1h16ZM2 56v8h42v-8H2Zm9-10v8h33v-8H11Zm9-10v8h24v-8H20Zm9-10v8h15v-8H29Z" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, -1.7763568394002505e-15)" />
             </svg>
-            <p class="text-xs">Celliers</p>
+            <p class="text-xs">Vos celliers</p>
             <!-- </a> -->
         </button>
 
         <!-- Icône AddBottle -->
-        <button class='hover:bg-pale-pink flex flex-col items-center  p-2' wire:click="redirectToAddBottle">
+        <button class='hover:bg-pale-pink flex flex-col items-center px-2 w-1/3' wire:click="redirectToAddBottle">
             <!-- BLANCHE -->
             <!-- <a href="/bottles" class='hover:bg-pale-pink flex flex-col items-center p-2'> -->
             <svg viewBox="-14 -7 80 67.5" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
                 <circle stroke='#fff' stroke-width='2' cx="38.99" cy="53" r="1" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
                 <path stroke='#fff' stroke-width='1' d="M47 41h-4v-4a1 1 0 0 0-2 0v4h-4a1 1 0 0 0 0 2h4v4a1 1 0 0 0 2 0v-4h4a1 1 0 0 0 0-2Z" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
             </svg>
-            <p class="text-xs">Bouteilles</p>
+            <p class="text-xs">Ajouter une bouteille</p>
             <!-- </a> -->
         </button>
     </div>
