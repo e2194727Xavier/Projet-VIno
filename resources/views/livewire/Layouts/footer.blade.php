@@ -1,4 +1,4 @@
-<div class="sticky bottom-0 w-full left-0 right-0 flex items-center ">
+<div class="fixed bottom-0 w-full left-0 right-0 flex items-center ">
     <div class="justify-around flex w-full text-white bg-red-wine">
 
         <!-- icone retour au catalogue -->
