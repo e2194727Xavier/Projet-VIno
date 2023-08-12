@@ -26,10 +26,15 @@ module.exports = {
         '150': '150px',
         '200': '200px'
       },
+      
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif']
       },
+
+      maxHeight:{
+        '85':'85vh'
+      }
     },
   },
   plugins: [
