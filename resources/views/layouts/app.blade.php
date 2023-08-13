@@ -13,10 +13,9 @@
 </head>
 
 <body>
-
     @livewire('layouts.header')
 
-    <div class="">
+    <div>
         {{ $slot }}
     </div>
 

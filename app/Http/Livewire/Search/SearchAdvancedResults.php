@@ -70,7 +70,7 @@ class SearchAdvancedResults extends Component
 
     public function render()
     {
-        return view('livewire.many-bottles', ['bottles' => $this->bottles]);
+        return view('livewire.Bottles.many-bottles', ['bottles' => $this->bottles]);
     }
 
     public function searchPerformed($search)

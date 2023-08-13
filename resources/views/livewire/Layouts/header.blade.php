@@ -98,7 +98,7 @@
     <div class="flex flex-col items-end mr-6 text-white mt-4 text-xs">
         <div class="flex flex-col items-end">
             @auth
-            <p>{{ $user->email }}</p>
+            <p>Bonjour <span>{{ $user->first_name }}</span></p>
             <button wire:click="logout" class="mt-4">Déconnexion</button>
             @endauth
         </div>
