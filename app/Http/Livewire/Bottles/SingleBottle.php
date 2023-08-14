@@ -15,7 +15,6 @@ class SingleBottle extends Component
     public function mount($bottle_id)
     {
         $this->bottleId = $bottle_id;
-        $this->loadBottle();
     }
 
     
@@ -25,13 +24,11 @@ class SingleBottle extends Component
         $cellar=session('cellar_inf');
         // dd($cellar);
         
-
+        $this->bottle = Bottle::find($this->bottleId);
         return view('livewire.Bottles.single-bottle', ['bottle' => $this->bottle]);
     }
 
-    public function loadBottle(){
-        $this->bottle = Bottle::find($this->bottleId);
-    }
+  
    
 
     public function addToCellar()
