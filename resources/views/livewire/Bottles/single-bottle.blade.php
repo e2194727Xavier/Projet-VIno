@@ -6,19 +6,15 @@
             <h1 class="text-right font-bold font-roboto">{{ $bottle->name }}</h1>
             <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
             <!-- @if(session('cellar_inf')) @endif-->
+
             <!-- Pour ajouter une quantité à l'ajout -->
             <div class="py-2">
                 <button wire:click="decrement" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     -
                 </button>
-                @if ($showQuantity)
-                <!-- Show quantity as 1 -->
-                <input class="w-10 text-center rounded-md" wire:model="quantity" value='{{ $quantityInCellar }}'>
-                <!-- <span class="text-xl">1</span> -->
-                @else
-                <input class="w-10 text-center rounded-md" wire:model="quantity" value="{{ $quantityInCellar }}">
-                <!-- Show the actual quantity from the cellar -->
-                @endif
+                <!-- Montre la quantité contenue dans le cellier -->
+                <input class="w-10 text-center rounded-md" value="{{ $quantityInCellar }}">
+
 
                 <button wire:click="increment" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     +

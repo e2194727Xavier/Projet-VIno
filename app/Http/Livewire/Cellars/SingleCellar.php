@@ -23,7 +23,7 @@ class SingleCellar extends Component
         $this->cellarId = $cellar_id;
     }
       
-    
+    // Permet de faire l'édition du nom du cellier
     public function updateName($newName){
         $this->newName = $newName;
 
@@ -43,35 +43,36 @@ class SingleCellar extends Component
             $query->whereNull('bottle_in_cellars.deleted_at');
         }])->where('id', $this->cellarId)->first();   
     }
-    public function increment($bottle_id)
-    {
-        $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
-        ->where('bottle_id', $bottle_id)
-        ->first();
+
+    // public function increment($bottle_id)
+    // {
+    //     $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
+    //     ->where('bottle_id', $bottle_id)
+    //     ->first();
         
-        if ($bottleInCellar) {
-            $bottleInCellar->quantity += 1;
-            $bottleInCellar->save();
-        }
-    }
+    //     if ($bottleInCellar) {
+    //         $bottleInCellar->quantity += 1;
+    //         $bottleInCellar->save();
+    //     }
+    // }
 
-    public function decrement($bottle_id)
-    {
-        $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
-            ->where('bottle_id', $bottle_id)
-            ->first();
+    // public function decrement($bottle_id)
+    // {
+    //     $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
+    //         ->where('bottle_id', $bottle_id)
+    //         ->first();
     
-        if ($bottleInCellar) {
-            $bottleInCellar->quantity -= 1;
-            if ($bottleInCellar->quantity < 0) {
-                $bottleInCellar->quantity = 0;
-            }
-            $bottleInCellar->save();
-        }
+    //     if ($bottleInCellar) {
+    //         $bottleInCellar->quantity -= 1;
+    //         if ($bottleInCellar->quantity < 0) {
+    //             $bottleInCellar->quantity = 0;
+    //         }
+    //         $bottleInCellar->save();
+    //     }
 
-    }
+    // }
 
-    
+    // montre les bouteilles associées au cellier qui n'ont pas de valeur dans la colonne 'deleted_at'
     public function render()
     {
         $this->cellar = Cellar::with(['bottles' => function ($query) {
