@@ -1,8 +1,7 @@
-<header class="flex bg-red-wine justify-between item-center">
+<header class="flex bg-red-wine justify-between item-center w-full right-0">
     <!-- icone logo  -->
-    <div class="ml-4">
-
-        <a href="/index">
+    <div class="ml-4 w-full">
+        <a href="{{ route('index') }}">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" zoomAndPan="magnify" viewBox="60 50 350 250" preserveAspectRatio=" xMidYMid meet" version="1.0">
                 <defs>
                     <g />
@@ -98,7 +97,7 @@
     <div class="flex flex-col items-end mr-6 text-white mt-4 text-xs">
         <div class="flex flex-col items-end">
             @auth
-            <p>{{ $user->email }}</p>
+            <p>Bonjour <span>{{ $user->first_name }}</span></p>
             <button wire:click="logout" class="mt-4">Déconnexion</button>
             @endauth
         </div>

@@ -1,19 +1,20 @@
-<div style="margin-left: 40px; margin-bottom:30px; margin-top:20px;">
-    <div style="position: relative;">
+<div class="mx-6 my-4 font-roboto">
+<div class="relative flex flex-col">
+    <p class="my-4 ">Faites une recherche rapide parmis notre sélection</p>
         <input type="text" wire:model="search" wire:keydown="fetchResults" placeholder="Inscrire un mot clé..." class="border border-gray-300 rounded py-2 px-4 mb-2">
-        <button class="bg-dark text-white hover:bg-dark-red text-white font-bold py-2 px-4 border border-dark-red rounded" wire:click="handleSearch">Rechercher</button>
-        <a href="{{ route('bottle-advanced-form') }}">Recherche avancée</a>
+        <!-- <button class="bg-dark text-white hover:bg-dark-red text-white font-bold py-2 px-4 border border-dark-red rounded" wire:click="handleSearch">Rechercher</button> -->
+        <!-- <a href="{{ route('bottle-advanced-form') }}" class="mt-4 underline">Recherche avancée</a> -->
         @if(!empty($results))
-            <div style="position: absolute; top: 100%; left: 0; z-index: 10; background-color: white; border: 1px solid #ccc; border-radius: 4px; width: 100%;">
-                <ul style="list-style: none; padding: 0;">
+        <div class="absolute top-full left-0 z-10 bg-white border border-gray-300 rounded w-full">
+                <ul class="list-none p-0">
                     @foreach($results as $result)
                         <li wire:click="selectResult('{{ $result['id'] }}')" style="padding: 10px; border-bottom: 1px solid #ccc;">
                             {{ $result['name'] }} - {{ $result['description'] }} - {{ $result['price'] }} - {{ $result['code_saq'] }}
                         </li>
                     @endforeach
                 </ul>
-                @if(count($results) >= 10) <!-- This checks if there are more than 10 items. Adjust the number as needed. -->
-                    <button wire:click="loadMore" style="margin-top: 10px; background-color: #9B0738; color: white; border: none; padding: 8px 16px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; cursor: pointer; border-radius: 4px;">Plus</button>
+                @if(count($results) >= 10)  <!-- valide si il y a plus de 10 items -->
+                    <button wire:click="loadMore" class="mt-2.5 px-4 py-2 text-center inline-block text-sm cursor-pointer rounded">Load more</button>
                 @endif
             </div>
         @endif

@@ -25,14 +25,13 @@ class Footer extends Component
     {
         $url = route('bottles');
         return redirect($url);
-    }
-    
+    }    
 
-    // public function redirectToCellars()
-    // {
-    //     $url = route('cellars');
-    //     return redirect($url);
-    // }
+    public function redirectToCellars()
+    {
+        $url = route('cellars');
+        return redirect($url);
+    }
 
     // public function redirectToWishlist()
     // {

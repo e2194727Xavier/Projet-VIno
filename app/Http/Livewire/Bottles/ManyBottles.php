@@ -54,4 +54,5 @@ class ManyBottles extends Component
     {
         $this->search = $searchTerm;
     }
+
 }

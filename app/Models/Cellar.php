@@ -14,14 +14,15 @@ class Cellar extends Model
         'user_id'
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function bottles()
     {
-    return $this->belongsToMany(Bottle::class, 'bottle_in_cellars')
-                ->withPivot('quantity'); // pour récuperer la donnée quantité 
+        return $this->belongsToMany(Bottle::class, 'bottle_in_cellars')
+            ->withPivot('quantity'); // pour récuperer la donnée quantité 
     }
 
 }

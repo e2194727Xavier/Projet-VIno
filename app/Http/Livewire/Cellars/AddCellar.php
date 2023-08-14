@@ -41,8 +41,7 @@ class AddCellar extends Component
 
         session()->put('cellar_inf', $cellarInf);
         $cellarInf =  session()->get('cellar_inf');
-      
-        dd($cellarInf);
+
         session()->flash('message', 'Cellier ajouté avec succès.');      
         $this->reset('nom');
     }
