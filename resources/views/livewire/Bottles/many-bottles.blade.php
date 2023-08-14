@@ -3,7 +3,7 @@
 
         <div class="max-w-1200px">
             @foreach($bottles as $bottle)
-            @livewire('bottles.single-bottle', ['bottle_id' => $bottle['id']], key($bottle['id']))
+            @livewire('bottles.single-bottle', ['bottle_id' => $bottle['id']], key($bottle['id']), "showQuantity" => true)
             @endforeach
             @if ($bottles instanceof \Illuminate\Pagination\LengthAwarePaginator)
             {{ $bottles->links('livewire.simple-pagination') }}
