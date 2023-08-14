@@ -1,7 +1,7 @@
 <div>
     @livewire('bottles.bottle-search')
     @if($selectedBottle)
-        @livewire('bottles.single-bottle', ['bottle_id' => $selectedBottle['id']])
+        @livewire('bottles.single-bottle', ['bottle_id' => $selectedBottle['id']],key($selectedBottle['id']))
     @else
     <form wire:submit.prevent class='w-full p-4 bg-white shadow-lg rounded-lg'>
         @csrf

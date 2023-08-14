@@ -1,14 +1,4 @@
 <div class="p-6 h-screen">
-<!-- <div class="flex items-center justify-between">
-    @if ($editing)
-        <input wire:model="title" type="text" placeholder="{{ $cellar->name }}" />
-        <button class="text-right" wire:click="toggleEditingClose">✕</button>
-        <button class="text-right" wire:click="save">✔</button>
-    @else
-        <h1 class="text-3xl font-bold mb-4">{{ $cellar->name }}</h1>
-        <button class="text-right" wire:click="toggleEditing">Modifier</button>
-    @endif
-</div> -->
 <div  x-data="{ editing: false, newName: '{{ $cellar->name }}' }">
     <div class="flex items-center justify-between">
         <h1 class="text-2xl font-bold mb-4" x-show="!editing">{{ $cellar->name }}</h1>

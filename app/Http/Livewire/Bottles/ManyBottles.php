@@ -11,6 +11,7 @@ class ManyBottles extends Component
     public $search = '';
     public $component = 'bottles';
     protected $paginationTheme = "tailwind";
+  /*   public $searchResults; */
     // public function styles()
     // {
     //     return [
@@ -44,7 +45,10 @@ class ManyBottles extends Component
          ])->layout('layouts.app');
     }
     
-    protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'];
+ /*    public function updateSearchResults($results){
+       $this->searchResults = $results;
+    } */
+    protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'/* , 'searchResultsFetched' => 'updateSearchResults' */];
 
     public function performSearch($searchTerm)
     {

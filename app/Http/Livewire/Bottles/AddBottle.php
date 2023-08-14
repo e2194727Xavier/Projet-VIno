@@ -34,6 +34,7 @@ class AddBottle extends Component
     public $image;
     public $url_image;
 
+
     // donnée venant de bottleSearch et l'écouteur d'évènement déclenchée à la sélection d'une bouteille
     public $selectedBottle;
     protected $listeners = ['resultSelected' => 'onResultSelected'];
@@ -54,7 +55,9 @@ class AddBottle extends Component
         $this->bottle = $bottle;
         $this->countries = Country::all();
         $this->types = Type::all();
+        
     }
+
 
     public function render()
     {
@@ -64,8 +67,12 @@ class AddBottle extends Component
     public function onResultSelected($selectedBottle)
     {
         // dd($selectedBottle);
-        $this->selectedBottle = $selectedBottle;
+        $this->selectedBottle = $selectedBottle;  
     }
+
+    /* public function resetSelectedBottle(){
+        $this->selectedBottle = null;
+    } */
 
     public function saveUnlistedBottle()
     {

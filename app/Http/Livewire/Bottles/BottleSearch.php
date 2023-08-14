@@ -11,6 +11,7 @@ class BottleSearch extends Component
     public $search = '';
     public $results = [];
     public $selectedBottle;
+    /* public $displayResults = true; */
     
     public function fetchResults()
         {
@@ -40,10 +41,11 @@ class BottleSearch extends Component
                     $this->results = $newResults;
                 } else {
                     $this->results = array_merge($this->results, $newResults);
-                }
+                } 
             } else {
                 $this->results = [];
             }
+            /* $this->emit('searchResultsFetched', $this->results); */
         }
 
     public $page = 1;
@@ -80,7 +82,7 @@ class BottleSearch extends Component
 
     public function render()
         {
-            return view('livewire.bottles.bottle-search');
+            return view('livewire.Bottles.bottle-search');
         }
 
 }

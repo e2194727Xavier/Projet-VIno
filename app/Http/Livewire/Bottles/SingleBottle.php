@@ -10,21 +10,29 @@ class SingleBottle extends Component
     public $bottleId;
     public $bottle;
 
+
     // Handle the passed parameter
     public function mount($bottle_id)
     {
         $this->bottleId = $bottle_id;
+        $this->loadBottle();
     }
 
+    
     public function render()
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar=session('cellar_inf');
         // dd($cellar);
-        $this->bottle = Bottle::find($this->bottleId);
+        
 
         return view('livewire.Bottles.single-bottle', ['bottle' => $this->bottle]);
     }
+
+    public function loadBottle(){
+        $this->bottle = Bottle::find($this->bottleId);
+    }
+   
 
     public function addToCellar()
     {
