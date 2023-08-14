@@ -1,4 +1,4 @@
-<div class=" bg-gray-100 flex flex-col items-center justify-center h-screen w-full max-h-85">
+<div class=" bg-gray-100 flex flex-col items-center justify-center w-full max-h-85">
     <div class="p-6 px-4 ">
         <form wire:submit.prevent="handleSearch" class="w-full ">
             <h1 class="text-2xl font-bold mb-6 text-center">Recherche avancée</h1>
