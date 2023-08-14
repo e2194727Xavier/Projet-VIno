@@ -80,7 +80,7 @@ class BottleSearch extends Component
 
     public function render()
         {
-            return view('livewire.bottles.bottle-search');
+            return view('livewire.Bottles.bottle-search');
         }
 
 }
