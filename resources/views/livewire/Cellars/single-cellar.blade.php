@@ -1,4 +1,4 @@
-<div class="h-screen">
+<div class="">
     <div x-data="{ editing: false, newName: '{{ $cellar->name }}' }">
         <div class="flex items-center justify-between">
             <h1 class="p-6 text-2xl font-bold mb-4" x-show="!editing">{{ $cellar->name }}</h1>
