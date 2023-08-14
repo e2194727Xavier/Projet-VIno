@@ -58,7 +58,7 @@ class AddBottle extends Component
 
     public function render()
     {
-        return view('livewire.bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types]);
+        return view('livewire.Bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types]);
     }
 
     public function onResultSelected($selectedBottle)

@@ -33,7 +33,6 @@ class SingleCellar extends Component
         $cellar = Cellar::findOrFail($this->cellarId);
         $cellar->name = $this->newName;
         $cellar->save();
-        
     }
     
 
@@ -42,14 +41,14 @@ class SingleCellar extends Component
         // refresh the list of bottles by re-fetching the cellar
         $this->cellar = Cellar::with(['bottles' => function ($query) {
             $query->whereNull('bottle_in_cellars.deleted_at');
-        }])->where('id', $this->cellarId)->first();
+        }])->where('id', $this->cellarId)->first();   
     }
     public function increment($bottle_id)
     {
         $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
         ->where('bottle_id', $bottle_id)
         ->first();
-
+        
         if ($bottleInCellar) {
             $bottleInCellar->quantity += 1;
             $bottleInCellar->save();
@@ -69,6 +68,7 @@ class SingleCellar extends Component
             }
             $bottleInCellar->save();
         }
+
     }
 
     
@@ -77,8 +77,7 @@ class SingleCellar extends Component
         $this->cellar = Cellar::with(['bottles' => function ($query) {
             $query->whereNull('bottle_in_cellars.deleted_at');
         }])->where('id', $this->cellarId)->first();
-    
-    
+        
         return view('livewire.Cellars.single-cellar', ['cellar' => $this->cellar]);
     }    
 }

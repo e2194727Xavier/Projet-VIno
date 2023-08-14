@@ -12,11 +12,10 @@
     @livewireStyles
 </head>
 
-<body class="min-h-screen flex flex-col ">
-
+<body>
     @livewire('layouts.header')
 
-    <div class="flex-1 overflow-overlay">
+    <div>
         {{ $slot }}
     </div>
 

@@ -52,6 +52,6 @@ class BottleAdvancedForm extends Component
 
     public function render()
     {
-        return view('livewire.bottle-advanced-form');
+        return view('livewire.Bottles.bottle-advanced-form');
     }
 }

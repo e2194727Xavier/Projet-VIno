@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>S'inscrire</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="bg-gray-200 flex flex-col justify-center h-screen">
 
-<div class="w-full max-w-xl mx-auto bg-white p-6">
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen w-full">
+
+    <div class="w-full max-w-xl mx-auto p-6 px-4">
         <h1 class="text-2xl font-bold mb-6 text-center">Inscription</h1>
 
-        <form method="POST">
+        <form method="POST" class="w-full">
             @csrf
-
             <div class="mb-4">
                 @error('first_name')
                 <div class="text-red-500">{{ $message }}</div>
@@ -57,4 +59,5 @@
         </form>
     </div>
 </body>
+
 </html>
