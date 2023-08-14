@@ -17,7 +17,7 @@ class BottleInCellar extends Model
         'quantity'
     ];
 
-
-
     
+
+
 }
