@@ -12,12 +12,14 @@ class SingleBottle extends Component
     public $bottleId;
     public $bottle;
     public $showQuantity = false;
+    public $quantityInCellar;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $showQuantity = false)
+    public function mount($bottle_id, $quantityInCellar, $showQuantity = false)
     {
         $this->bottleId = $bottle_id;
         $this->showQuantity = $showQuantity;
+        $this->quantityInCellar = $quantityInCellar;
         if (!$this->showQuantity) {
             // $cellar = session('cellar_inf');
             // if ($cellar && $this->bottle) {
@@ -30,11 +32,11 @@ class SingleBottle extends Component
             $cellar = session('cellar_inf');
             // $cellar = Cellar::find($cellarId);
             // $bottle = $cellar->bottles->find($bottle_id);
-            
+
             // $quantityInCellar = $bottle->pivot->quantity ?? 0;
             // dd($quantityInCellar);
         } else {
-            $this->quantity = 1;
+            // $this->quantity = 1;
         }
     }
 
@@ -46,13 +48,10 @@ class SingleBottle extends Component
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', [
-            
+
             'bottle' => $this->bottle,
             'showQuantity' => $this->showQuantity,
-            'quantityInCellar' => $this->quantity
-        ,
-            'showQuantity' => $this->showQuantity,
-            'quantityInCellar' => $this->quantity
+            'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
         ]);
     }
 
@@ -73,26 +72,26 @@ class SingleBottle extends Component
                     // Update the existing quantity
                     $existingBottle->pivot->quantity += $this->quantity;
                     $existingBottle->pivot->save();
-                    $this->quantity = 1;
+                    // $this->quantity = 1;
                 } else {
                     // Attach the bottle with the new quantity
-                    $firstCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantity]);
+                    $firstCellar->bottles()->attach($selectedBottle->id);
                 }
             }
         }
     }
 
-    public $quantity = 1;
+    // public $quantity = 1;
 
     public function increment()
     {
-        $this->quantity++;
+        $this->quantityInCellar++;
     }
 
     public function decrement()
     {
-        if ($this->quantity > 1) {
-            $this->quantity--;
+        if ($this->quantityInCellar > 1) {
+            $this->quantityInCellar--;
         }
     }
 }
