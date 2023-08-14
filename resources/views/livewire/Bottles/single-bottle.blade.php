@@ -14,7 +14,7 @@
                 </button>
 
                 <!-- Montre la quantité contenue dans le cellier -->
-                <input class="w-8 h-8 text-sm p-2 text-center rounded-md bg-gray-100" type='number' value="{{ $quantityInCellar }}">
+                <input class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100" type='number' value="{{ $quantityInCellar }}">
 
                 <button wire:click="increment" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     +

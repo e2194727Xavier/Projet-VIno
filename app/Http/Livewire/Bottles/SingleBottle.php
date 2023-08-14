@@ -63,19 +63,19 @@ class SingleBottle extends Component
         // dd(session('cellar_inf'));
 
         if ($user) {
-            $firstCellar = $user->cellars->first(); // Get the first cellar
+            $firstCellar = $user->cellars->first(); // Aller chercher le cellier de l'usager
 
             if ($firstCellar) {
                 $existingBottle = $firstCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
 
                 if ($existingBottle) {
-                    // Update the existing quantity
-                    $existingBottle->pivot->quantity += $this->quantity;
+                    // comportement si la bouteille se trouve déjà dans le cellier
+                    $existingBottle->pivot->quantity = $this->quantityInCellar;
                     $existingBottle->pivot->save();
-                    // $this->quantity = 1;
                 } else {
-                    // Attach the bottle with the new quantity
+                    // Ajouter la bouteille au cellier si elle n'y existe pas
                     $firstCellar->bottles()->attach($selectedBottle->id);
+                
                 }
             }
         }
