@@ -1,5 +1,5 @@
-    <div >
-        <h1 class="text-2xl text-center font-roboto my-4">Catalogue des bouteilles</h1>
+    <div class="my-4">
+        <h1 class="text-2xl text-left font-roboto my-6 ml-6">Catalogue des bouteilles</h1>
         <div class="max-w-1200px">
             @if(session('success'))
             <div class="bg-green-200 text-green-800 p-2 mb-4 rounded">{{ session('success')}}</div>
@@ -19,7 +19,7 @@
             @endforeach
 
             @if ($bottles instanceof \Illuminate\Pagination\LengthAwarePaginator)
-            <div>{{ $bottles->links('livewire.simple-pagination') }}</div>
+            <div class="my-4">{{ $bottles->links('livewire.simple-pagination') }}</div>
             @endif
         </div>
     </div>

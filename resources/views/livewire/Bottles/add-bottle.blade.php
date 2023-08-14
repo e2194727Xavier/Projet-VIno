@@ -1,4 +1,4 @@
-<div class="bg-gray-100 h-screen">
+<div>
     @livewire('bottles.bottle-search')
     @if($selectedBottle)
         @livewire('bottles.single-bottle', ['bottle_id' => $selectedBottle['id'], 'quantityInCellar' => '1'])

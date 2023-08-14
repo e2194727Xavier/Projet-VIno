@@ -1,16 +1,10 @@
-<!-- 
-    * la vue many-cellar s'affiche, toutefois, elle ne prend pas compte de l'utilisateur connecté. 
-    * la barre de recher s'affiche et fonctionne 
-    * aucun design
--->
 <div>
     @error('cellars')
     <div class="text-red-500">{{ $message }}</div>
     @enderror
 
-
     <div class="mt-4 font-roboto">
-        <h1 class="text-center text-xl mb-6">Liste de vos celliers</h1>
+        <h1 class="text-left text-xl ml-6 mb-6">Vos celliers:</h1>
         <div class="flex flex-col gap-2 bg-pink ">
             @foreach ($cellars as $cellar)
             <article class="bg-gold mx-6 my-2 flex border-2 border-gold rounded-lg items-center gap-2 justify-center">
