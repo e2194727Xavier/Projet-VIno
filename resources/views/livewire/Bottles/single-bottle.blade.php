@@ -12,9 +12,9 @@
                 <button wire:click="decrement" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     -
                 </button>
+
                 <!-- Montre la quantité contenue dans le cellier -->
                 <input class="w-10 text-center rounded-md" value="{{ $quantityInCellar }}">
-
 
                 <button wire:click="increment" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     +
