@@ -8,18 +8,18 @@
             <!-- @if(session('cellar_inf')) @endif-->
 
             <!-- Pour ajouter une quantité à l'ajout -->
-            <div class="py-2">
-                <button wire:click="decrement" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
+            <div class="flex items-center gap-2 my-2">
+                <button wire:click="decrement" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     -
                 </button>
 
                 <!-- Montre la quantité contenue dans le cellier -->
-                <input class="w-10 text-center rounded-md" value="{{ $quantityInCellar }}">
+                <input class="w-8 h-8 text-sm p-2 text-center rounded-md bg-gray-100" type='number' value="{{ $quantityInCellar }}">
 
-                <button wire:click="increment" class="text-sm px-4 py-2 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
+                <button wire:click="increment" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     +
                 </button>
             </div>
-            <button wire:click="addToCellar" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ajouter</button>
+            <button wire:click="addToCellar" class="rounded-md bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter</button>
         </div>
     </article>
