@@ -13,10 +13,12 @@ module.exports = {
       'xs': '500px'
     },
     extend: {
-     
+      height: {
+        'screen-75': 'calc(100vh - 75px)',
+      },
       colors: {
         'red-wine': '#9B0738',
-        'gold': '#927A50',
+        'gold': '#4d4d4d',
         'dark':'#251322'
 
       },

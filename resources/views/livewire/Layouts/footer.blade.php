@@ -1,4 +1,4 @@
-<footer class="fixed bottom-0 w-full left-0 right-0 flex items-center">
+<footer class="sticky bottom-0 w-full left-0 right-0 flex items-center">
     <div class="justify-around flex w-full text-white bg-red-wine ">
         <!-- ICÔNE CATALOGUE  -->
         <button class='hover:bg-pale-pink flex flex-col items-center p-2 w-1/3' wire:click="redirectToCatalogue">
