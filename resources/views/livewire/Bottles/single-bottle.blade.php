@@ -32,7 +32,7 @@
 
                 @if($showSelect)
                 <select wire:model="cellar_id" name="cellars" id="cellars">
-                    <option value="" selected disabled>Choisir votre cellier</option>
+                    <option value="" disabled>Choisir votre cellier</option>
                     @foreach($cellars as $cellar)
                     <option value="{{$cellar->id}}" @if($cellar->id == $cellar_id) selected @endif>{{$cellar->name}}</option>
                     @endforeach
