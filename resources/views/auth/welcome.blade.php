@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Page de connexion</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
