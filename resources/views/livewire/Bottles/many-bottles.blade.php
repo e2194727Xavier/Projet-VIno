@@ -2,7 +2,7 @@
         <h1 class="text-left text-xl ml-6 mb-6 font-bold text-gray-500">Catalogue</h1>
         <div class="max-w-1200px">
             @if(empty($cellars))
-            <p style="margin: 3rem auto; width: fit-content;">
+            <p class="my-12 w-full">
             Aucun cellier trouvé.
             </p>
             @endif
