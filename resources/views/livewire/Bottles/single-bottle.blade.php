@@ -6,6 +6,7 @@
             <h1 class="text-right font-bold font-roboto">{{ $bottle->name }}</h1>
             <p class="text-right text-xs my-2">{{ $bottle->description }}</p>
             <p class="text-right text-xs">prix SAQ {{ $bottle->price }}$</p>
+
             <!-- @if(session('cellar_inf')) @endif-->
 
             <!-- Pour ajouter une quantité à l'ajout -->
@@ -16,7 +17,7 @@
                     </button>
                     @if(!$fromCatalogue)
                     <!-- Montre la quantité contenue dans le cellier -->
-                    <input class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number' value="{{ $quantityInCellar }}">
+                    <input wire:model="quantityInCellar" class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number' ">
                     <button wire:click="increment" class="text-xs w-6 h-6 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-full">
                         +
                     </button>
