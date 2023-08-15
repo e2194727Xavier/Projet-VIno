@@ -5,98 +5,109 @@ namespace App\Http\Livewire\Bottles;
 
 use Livewire\Component;
 use App\Models\Bottle;
+use App\Models\Cellar;
 use Illuminate\Support\Facades\Auth;
 
 class SingleBottle extends Component
 {
     public $bottleId;
     public $bottle;
-    public $showQuantity = false;
+    public $fromCatalogue;
     public $quantityInCellar;
+    public $quantityFromCatalogue;
+    public $cellars;
+    public $cellar_id = "";
+    public $showSelect = true;
+    public $quantity;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $quantityInCellar, $showQuantity = false)
+    public function mount($quantity = 1,$bottle_id, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false, $cellars = null, $showSelect = true)
     {
         $this->bottleId = $bottle_id;
-        $this->showQuantity = $showQuantity;
+        $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
-        if (!$this->showQuantity) {
-            // $cellar = session('cellar_inf');
-            // if ($cellar && $this->bottle) {
-            //     $quantityInCellar = $this->bottle->pivot->quantity ?? 0;
-            //     // $quantityInCellar = $this->bottle->cellars->first()->pivot->quantity ?? 0;
-            //     $this->quantity = $quantityInCellar;
-            // } else {
-            //     $this->quantity = 0;
-            // }
-            $cellar = session('cellar_inf');
-            // $cellar = Cellar::find($cellarId);
-            // $bottle = $cellar->bottles->find($bottle_id);
+        $this->cellars = $cellars;
+        $this->showSelect = $showSelect;
+        $this->quantityFromCatalogue = $quantityFromCatalogue;
+        $this->quantity = $quantity;
 
-            // $quantityInCellar = $bottle->pivot->quantity ?? 0;
-            // dd($quantityInCellar);
-        } else {
-            // $this->quantity = 1;
-        }
     }
 
-    
     public function render()
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar = session('cellar_inf');
-        // dd($cellar);
-        
+
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', [
 
             'bottle' => $this->bottle,
-            'showQuantity' => $this->showQuantity,
+            'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
+            'quantityFromCatalogue' => $this->quantityFromCatalogue,
+            'quantity'=> $this->quantity
         ]);
     }
 
-  
-   
+
+
 
     public function addToCellar()
     {
         $user = Auth::user();
         $selectedBottle = $this->bottle;
-        // dd($user->cellars);
-        // dd(session('cellar_inf'));
 
         if ($user) {
-            $firstCellar = $user->cellars->first(); // Aller chercher le cellier de l'usager
+            $userCellar = Cellar::where("id", $this->cellar_id)->first();
 
-            if ($firstCellar) {
-                $existingBottle = $firstCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
+            if ($userCellar) {
+                $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
 
                 if ($existingBottle) {
-                    // comportement si la bouteille se trouve déjà dans le cellier
-                    $existingBottle->pivot->quantity = $this->quantityInCellar;
-                    $existingBottle->pivot->save();
-                } else {
+                    // comportement si l'usager modifie les bouteilles dans son cellier
+                    if ($this->quantityInCellar >= 0) {
+                        // lance la fonction de suppression si la valeur est 0
+                        if ($this->quantityInCellar == '0') {
+                            // Emit an event to trigger the deleteBottle function in DeleteBottle component
+                            $this->emit('triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
+                        }
+                        $existingBottle->pivot->quantity = $this->quantityInCellar;
+                        $existingBottle->pivot->save();
+                        // comportement si l'usager ajoute une bouteille du catalogue
+                    } elseif ($this->quantityFromCatalogue) {
+                        $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
+                        $existingBottle->pivot->save();
+                    }
                     // Ajouter la bouteille au cellier si elle n'y existe pas
-                    $firstCellar->bottles()->attach($selectedBottle->id);
-                
+                } else {
+                    // Add the bottle to the cellar if it's not already there
+                    $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                 }
             }
         }
     }
 
-    // public $quantity = 1;
+    public function deleteFromCellar()  
+    {
+    }
+
 
     public function increment()
     {
-        $this->quantityInCellar++;
+        if ($this->quantityInCellar) {
+            $this->quantityInCellar++;
+        } elseif ($this->quantityFromCatalogue) {
+            $this->quantityFromCatalogue++;
+        }
     }
 
     public function decrement()
     {
-        if ($this->quantityInCellar > 1) {
+        if ($this->quantityInCellar > 0) {
             $this->quantityInCellar--;
+        } elseif ($this->quantityFromCatalogue > 0) {
+            $this->quantityFromCatalogue--;
         }
     }
 }

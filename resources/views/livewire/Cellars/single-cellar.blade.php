@@ -15,6 +15,6 @@
     </div>
 
     @foreach($cellar->bottles as $bottle)
-        @livewire('bottles.single-bottle', ['bottle_id' => $bottle->id, 'quantityInCellar' => $bottle->pivot->quantity])
+        @livewire('bottles.single-bottle', ['bottle_id' => $bottle->id, 'quantityInCellar' => $bottle->pivot->quantity, 'showSelect' => false])
     @endforeach
 </div>

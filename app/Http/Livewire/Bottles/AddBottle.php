@@ -10,6 +10,7 @@ use Livewire\WithValidation;
 
 use Livewire\Component;
 use App\Models\Country;
+use App\Models\Cellar;
 use App\Models\Type;
 use App\Models\UnlistedBottle;
 
@@ -38,6 +39,7 @@ class AddBottle extends Component
     // donnée venant de bottleSearch et l'écouteur d'évènement déclenchée à la sélection d'une bouteille
     public $selectedBottle;
     protected $listeners = ['resultSelected' => 'onResultSelected'];
+    public $cellars;
 
     // messages de validation liés aux champs
     protected $messages = [
@@ -55,13 +57,14 @@ class AddBottle extends Component
         $this->bottle = $bottle;
         $this->countries = Country::all();
         $this->types = Type::all();
-        
+        $userId = auth()->id();
+       $this->cellars = Cellar::where('user_id', $userId)->get();       
     }
 
 
     public function render()
     {
-        return view('livewire.Bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types]);
+        return view('livewire.Bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types, 'cellars'=> $this->cellars]);
     }
 
     public function onResultSelected($selectedBottle)
