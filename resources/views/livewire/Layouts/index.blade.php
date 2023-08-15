@@ -1,5 +1,5 @@
 <section class="my-4 flex flex-col justify-center gap-4 w-full font-roboto ">
-    <h1 class="my-2 font-bold text-xl text-center uppercase text-red-wine">Votre vin, à portée de main.</h1>
+    <h1 class="my-2 font-bold text-xl text-center uppercase text-red-wine">Votre vin, à portée de main</h1>
 
     <!-- Section pour afficher le cellier de l'utilisateur boucle pour les celliers de lutilisateur many-cellars-->
 
@@ -14,9 +14,11 @@
     </section>
     @endif
 
-    <section class="flex flex-col text-sm w-full gap-2 px-6">
-        <a href="{{ route('add-cellar') }}" class="shrink bg-gold text-white rounded-lg text-center py-1 ">Ajouter un cellier</a> <!-- utilisation du lien pour la liste des bouteilles -->
-        <a href="{{ route('bottles') }}" class="shrink bg-gold text-white rounded-lg text-center py-1">Rechercher</a> <!-- utilisation du lien pour la liste des bouteilles -->
-        <a href="{{ route('bottles') }}" class="shrink bg-gold text-white rounded-lg text-center py-1 ">Catalogue</a>
+    <section class="flex flex-col text-sm w-full gap-2 px-6 mt-6">
+    <h1 class="text-left text-xl my-6 font-bold text-gray-500">Liens rapides</h1>
+
+        <a href="{{ route('add-cellar') }}" class="text-center rounded bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter un cellier</a> <!-- utilisation du lien pour la liste des bouteilles -->
+        <a href="{{ route('bottles') }}" class="text-center rounded bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Rechercher</a> <!-- utilisation du lien pour la liste des bouteilles -->
+        <a href="{{ route('bottles') }}" class="text-center rounded bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Catalogue</a>
     </section>
     </section>

@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
     @livewireStyles
 </head>
-<body class="flex flex-col">
+<body class="flex flex-col w-full">
     @livewire('layouts.header')
 
     <div class="flex flex-col grow">
