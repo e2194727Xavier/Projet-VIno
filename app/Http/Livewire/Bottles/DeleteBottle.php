@@ -9,17 +9,14 @@ class DeleteBottle extends Component
     public $bottleId;
     public $cellarId;
 
-    public function mount()
-    {
-        $this->listenForEvents(['triggerDeleteBottle']);
-    }
+    protected $listeners = ['triggerDeleteBottle' => 'handleTriggerDeleteBottle'];
 
-    public function triggerDeleteBottle($bottleId, $cellarId)
+    public function handleTriggerDeleteBottle($bottleId, $cellarId)
     {
         $this->bottleId = $bottleId;
         $this->cellarId = $cellarId;
 
-        $this->deleteBottle(); // Call the deleteBottle function
+        $this->deleteBottle();
     }
 
     public function deleteBottle()
@@ -32,15 +29,8 @@ class DeleteBottle extends Component
             $bottleInCellar->delete();
         }
 
-        $this->emit('bottleDeleted');  // emit an event to notify that a bottle was deleted
+        $this->emit('bottleDeleted');
     }
-
-    // public function render()
-    // {
-    //     return view('livewire.Bottles.delete-bottle');
-    // }
-    
-    protected $listeners = ['bottleDeleted' => 'handleBottleDeleted'];
 
     public function handleBottleDeleted()
     {
