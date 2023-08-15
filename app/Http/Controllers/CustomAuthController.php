@@ -33,12 +33,18 @@ class CustomAuthController extends Controller
     public function store(Request $request)
     {
 
+        $customAttributes = [
+            'first_name' => 'prénom',
+            'last_name' => 'nom de famille',
+            'password' => 'mot de passe',
+        ];
+
         $request->validate([
             'first_name' => 'required|regex:/^[a-zA-ZÀ-ÿ\s\-]+$/|min:2', /* Accepte les lettres FR en majuscule et minuscule ainsi que les lettre EN.  */
             'last_name' => 'required|regex:/^[a-zA-ZÀ-ÿ\s\-]+$/|min:2',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-        ]);
+        ], [], $customAttributes);
 
         try {
             $user = User::create([
@@ -116,5 +122,7 @@ class CustomAuthController extends Controller
         }
         // Redirection vers la page de connexion avec un message d'erreur en cas d'échec d'authentification
         return redirect()->back()->withErrors('Courriel ou mot de passe invalide');
+        // return redirect()->back()->withErrors(['loginError' => 'Courriel ou mot de passe invalide']);
+
     }
 }
