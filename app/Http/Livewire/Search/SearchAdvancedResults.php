@@ -40,9 +40,14 @@ class SearchAdvancedResults extends Component
 
         public function render()
     {
-        return view('livewire.Bottles.many-bottles', ['bottles' => $this->bottles])->layout('layouts.app');
-    }
-    
+        return view('livewire.Bottles.many-bottles', [
+            'bottles' => $this->bottles,
+            'search' => $this->search,
+            'priceMin' => $this->priceMin,
+            'priceMax' => $this->priceMax,
+            'description' => $this->description,
+        ]);    }
+
     // selon l'écouteur d'évènement searchPerformance, lance le chargement des bouteilles
     public function performSearch()
     {
