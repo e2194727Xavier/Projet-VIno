@@ -11,47 +11,31 @@ class SingleBottle extends Component
 {
     public $bottleId;
     public $bottle;
-    public $showQuantity = false;
+    public $fromCatalogue;
     public $quantityInCellar;
+    public $quantityFromCatalogue;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $quantityInCellar, $showQuantity = false)
+    public function mount($bottle_id, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false)
     {
         $this->bottleId = $bottle_id;
-        $this->showQuantity = $showQuantity;
+        $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
-        if (!$this->showQuantity) {
-            // $cellar = session('cellar_inf');
-            // if ($cellar && $this->bottle) {
-            //     $quantityInCellar = $this->bottle->pivot->quantity ?? 0;
-            //     // $quantityInCellar = $this->bottle->cellars->first()->pivot->quantity ?? 0;
-            //     $this->quantity = $quantityInCellar;
-            // } else {
-            //     $this->quantity = 0;
-            // }
-            $cellar = session('cellar_inf');
-            // $cellar = Cellar::find($cellarId);
-            // $bottle = $cellar->bottles->find($bottle_id);
-
-            // $quantityInCellar = $bottle->pivot->quantity ?? 0;
-            // dd($quantityInCellar);
-        } else {
-            // $this->quantity = 1;
-        }
+        $this->quantityFromCatalogue = $quantityFromCatalogue;
     }
 
     public function render()
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar = session('cellar_inf');
-        // dd($cellar);
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', [
 
             'bottle' => $this->bottle,
-            'showQuantity' => $this->showQuantity,
+            'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
+            'quantityFromCatalogue' => $this->quantityFromCatalogue,  // Pass the quantityInCellar to the view
         ]);
     }
 
@@ -59,8 +43,6 @@ class SingleBottle extends Component
     {
         $user = Auth::user();
         $selectedBottle = $this->bottle;
-        // dd($user->cellars);
-        // dd(session('cellar_inf'));
 
         if ($user) {
             $firstCellar = $user->cellars->first(); // Aller chercher le cellier de l'usager
@@ -68,30 +50,51 @@ class SingleBottle extends Component
             if ($firstCellar) {
                 $existingBottle = $firstCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
 
+                // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
-                    // comportement si la bouteille se trouve déjà dans le cellier
-                    $existingBottle->pivot->quantity = $this->quantityInCellar;
-                    $existingBottle->pivot->save();
+                    // comportement si l'usager modifie les bouteilles dans son cellier
+                    if ($this->quantityInCellar >= 0) {
+                        // lance la fonction de suppression si la valeur est 0
+                        // dd($this->quantityInCellar);
+                        if ($this->quantityInCellar == '0') {
+                            // Emit an event to trigger the deleteBottle function in DeleteBottle component
+                            $this->emit('triggerDeleteBottle', $selectedBottle->id, $firstCellar->id);
+                        }
+
+                        $existingBottle->pivot->quantity = $this->quantityInCellar;
+                        $existingBottle->pivot->save();
+                    // comportement si l'usager ajoute une bouteille du catalogue
+                    } elseif ($this->quantityFromCatalogue) {
+                        $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
+                        $existingBottle->pivot->save();
+                    }
+                // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
-                    // Ajouter la bouteille au cellier si elle n'y existe pas
-                    $firstCellar->bottles()->attach($selectedBottle->id);
-                
+                    $firstCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                 }
             }
         }
     }
 
-    // public $quantity = 1;
+    public function deleteFromCellar(){
+
+    }
 
     public function increment()
     {
-        $this->quantityInCellar++;
+        if ($this->quantityInCellar) {
+            $this->quantityInCellar++;
+        } elseif ($this->quantityFromCatalogue) {
+            $this->quantityFromCatalogue++;
+        }
     }
 
     public function decrement()
     {
-        if ($this->quantityInCellar > 1) {
+        if ($this->quantityInCellar > 0) {
             $this->quantityInCellar--;
+        } elseif ($this->quantityFromCatalogue > 0) {
+            $this->quantityFromCatalogue--;
         }
     }
 }
