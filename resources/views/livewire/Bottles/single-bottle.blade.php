@@ -12,14 +12,24 @@
                 <button wire:click="decrement" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     -
                 </button>
-
+                @if(!$fromCatalogue)
                 <!-- Montre la quantité contenue dans le cellier -->
+
                 <input class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number' value="{{ $quantityInCellar }}">
+
 
                 <button wire:click="increment" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
                     +
                 </button>
+                <button wire:click="addToCellar" class="rounded-md bg-red-wine px-3 py-2 text-xs font-semibold text-white shadow-sm">Enregistrer</button>
+                @else
+                <input class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100" type='number' value="{{ $quantityFromCatalogue }}">
+                <button wire:click="increment" class="text-sm w-8 h-8 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-md">
+                    +
+                </button>
+                <button wire:click="addToCellar" class="rounded-md bg-red-wine px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter</button>
+                @endif
+
             </div>
-            <button wire:click="addToCellar" class="rounded-md bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter</button>
         </div>
     </article>
