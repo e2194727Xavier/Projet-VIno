@@ -1,5 +1,5 @@
 <div class="">
-    <div x-data="{ editing: false, newName: '{{ $cellar->name }}' }">
+    <div x-data="{ editing: false, newName: '{{ $cellar->name }}' }" class="text-gray-500">
         <div class="flex items-center justify-between">
             <h1 class="p-6 text-2xl font-bold mb-4" x-show="!editing">{{ $cellar->name }}</h1>
             <input x-show="editing" x-model="newName" type="text" class="text-3xl font-bold mb-4 mr-2" />

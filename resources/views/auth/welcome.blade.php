@@ -31,7 +31,6 @@
             </div>
             @endif
             <div class="mb-6">
-                <!-- <h1 class="text-left text-lg font-bold text-gray-700 ">Connection</h1> -->
                 <label for="email" class="sr-only">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required class="border-gray-200 rounded-md p-2 w-full" placeholder="Courriel">
             </div>
@@ -41,15 +40,14 @@
                 <input id="password" type="password" name="password" required class="border-gray-200 rounded-md p-2 w-full" placeholder="Mot de passe">
             </div>
 
-            <div class="mb-4 ">
                 <button type="submit" class="rounded-md bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Se connecter</button>
-            </div>
         </form>
 
         <div class="text-center flex flex-col">
-            <span class="text-sm my-4">Vous n'avez pas de compte ?</span>
-            <a href="{{ route('register') }}" class="text-red-wine font-medium">Inscrivez-vous ici  </a>
+            <span class="text-sm mt-4">Vous n'avez pas de compte ?</span>
+            <a href="{{ route('register') }}" class="text-red-wine text-md">Inscrivez-vous ici  </a>
         </div>
+        <p class="text-xs my-6 text-center">@Copyright</p>
     </div>
 
 </body>
