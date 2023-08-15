@@ -3,7 +3,15 @@
         <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="max-w-80">
 
         <div class="flex flex-col justify-end items-end p-4 sm:flex-row sm:justify-between sm:gap-4 grow w-full">
-            <h1 class="text-right font-bold font-roboto">{{ $bottle->name }}</h1>
+            <div class="flex justify-between gap-2">
+                @if (session()->has('message'))
+                <div class="text-sm font-light text-green-500">{{ session('message') }}</div>
+                @endif
+                <h1 class="text-right font-bold font-roboto">
+                    {{ $bottle->name }}
+                </h1>
+            </div>
+
             <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
             <!-- @if(session('cellar_inf')) @endif-->
 
