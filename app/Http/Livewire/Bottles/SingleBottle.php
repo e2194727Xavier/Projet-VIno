@@ -74,7 +74,7 @@ class SingleBottle extends Component
                     // comportement si l'usager modifie les bouteilles dans son cellier
                     if ($this->quantityInCellar) {
                         // lance la fonction de suppression si la valeur est 0
-                        if ($this->quantityInCellar ) {
+                        if ($this->quantityInCellar === 0 ) {
                             // Émet un évènement qui déclenche la fonction DeleteBottle dans DeleteBottle -- ne fonctionne pas.
                             $this->emitTo(DeleteBottle::class, 'triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         } else {
@@ -84,6 +84,7 @@ class SingleBottle extends Component
                         }
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
                         $existingBottle->pivot->save();
+                    
                         // comportement si l'usager ajoute une bouteille du catalogue
                     } elseif ($this->quantityFromCatalogue) {
                         $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
