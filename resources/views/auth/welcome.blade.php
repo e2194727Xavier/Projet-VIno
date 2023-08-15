@@ -41,9 +41,7 @@
                 <input id="password" type="password" name="password" required class="border-gray-200 rounded-md p-2 w-full" placeholder="Mot de passe">
             </div>
 
-            <div class="mb-4 ">
                 <button type="submit" class="rounded-md bg-red-wine mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Se connecter</button>
-            </div>
         </form>
 
         <div class="text-center flex flex-col">

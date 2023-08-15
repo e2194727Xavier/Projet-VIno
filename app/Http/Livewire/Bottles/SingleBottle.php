@@ -14,14 +14,16 @@ class SingleBottle extends Component
     public $fromCatalogue;
     public $quantityInCellar;
     public $quantityFromCatalogue;
+    public $quantity;
 
     // Handle the passed parameter
-    public function mount($bottle_id, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false)
+    public function mount($bottle_id, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $quantity = 1)
     {
         $this->bottleId = $bottle_id;
         $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
         $this->quantityFromCatalogue = $quantityFromCatalogue;
+        $this->quantity = $quantity; //ajout mary 
     }
 
     public function render()
@@ -36,6 +38,7 @@ class SingleBottle extends Component
             'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
             'quantityFromCatalogue' => $this->quantityFromCatalogue,  // Pass the quantityInCellar to the view
+            'quantity' => $this->quantity  // Pass the quantityInCellar to the view // ajout-mary
         ]);
     }
 
