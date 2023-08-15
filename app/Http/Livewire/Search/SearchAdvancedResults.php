@@ -12,8 +12,9 @@ class SearchAdvancedResults extends Component
 {
     use WithPagination;
 
-    public $results = [];
+    // public $results = [];
     public $component = 'bottles';
+    protected $paginationTheme = "tailwind";
     protected $bottles = [];
 
     protected $queryString = ['search', 'priceMin', 'priceMax', 'description', 'page'];
@@ -35,21 +36,25 @@ class SearchAdvancedResults extends Component
         $this->loadBottles();
         $user_id = auth()->user()->id;
         $this->cellars = Cellar::where("user_id", $user_id)->get();
+    }
 
-        
-        
+        public function render()
+    {
+        return view('livewire.Bottles.many-bottles', ['bottles' => $this->bottles])->layout('layouts.app');
     }
     
+    // selon l'écouteur d'évènement searchPerformance, lance le chargement des bouteilles
     public function performSearch()
     {
         $this->loadBottles();
     }
     
+    // chargement des bouteilles
     public function loadBottles()
     {
         $query = Bottle::query();
 
-        // Apply search filters
+        // Applique les filtres
         if ($this->search && $this->search !== 'null') {
             $query->where('name', 'LIKE', '%' . $this->search . '%');
         }
@@ -66,25 +71,22 @@ class SearchAdvancedResults extends Component
             $query->where('price', '<=', $this->priceMax);
         }
 
-        // Fetch all bottles without pagination
-        $this->bottles = $query->get();
+        // Fetch les bouteilles, les ordonne et les pagine
+        $this->bottles = $query->orderBy('name')->paginate(9);
     }
 
-    public function getBottlesProperty()
-    {
-        return $this->bottles;
-    }
+    // 
+    // public function getBottlesProperty()
+    // {
+    //     return $this->bottles;
+    // }
 
-    public function render()
-    {
-        return view('livewire.Bottles.many-bottles', ['bottles' => $this->bottles]);
-    }
-
-    public function searchPerformed($search)
-    {
-        $this->search = $search;
-        $this->loadBottles();
-    }
+    // charge les données de la recherche et lance le chargement des bouteilles
+    // public function searchPerformed($search)
+    // {
+    //     $this->search = $search;
+    //     $this->loadBottles();
+    // }
     
 }
 
