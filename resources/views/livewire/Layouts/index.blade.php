@@ -16,7 +16,7 @@
 <section class="flex flex-col text-sm w-full gap-2 px-6">
     <h1 class="text-left text-xl my-6 font-bold text-gray-500">Liens rapides</h1>
     <a href="{{ route('add-cellar') }}" class="text-center rounded bg-gold mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter un cellier</a> <!-- utilisation du lien pour la liste des bouteilles -->
-    <a href="{{ route('bottles') }}" class="text-center rounded bg-gold mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Rechercher</a> <!-- utilisation du lien pour la liste des bouteilles -->
+    <a href="{{ route('add-bottle') }}" class="text-center rounded bg-gold mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Rechercher</a> <!-- utilisation du lien pour la liste des bouteilles -->
     <a href="{{ route('bottles') }}" class="text-center rounded bg-gold mt-2 px-3 py-2 text-xs font-semibold text-white shadow-sm">Catalogue</a>
 </section>
 </section>
