@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Search;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Bottle;
+use App\Models\Cellar;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -21,6 +22,7 @@ class SearchAdvancedResults extends Component
     public $priceMin;
     public $priceMax;
     public $description;
+    public $cellars;
 
     protected $listeners = ['searchPerformance' => 'performSearch'];
 
@@ -31,6 +33,11 @@ class SearchAdvancedResults extends Component
         $this->priceMax = request()->query('priceMax', 0);
         $this->description = request()->query('description', null);
         $this->loadBottles();
+        $user_id = auth()->user()->id;
+        $this->cellars = Cellar::where("user_id", $user_id)->get();
+
+        
+        
     }
     
     public function performSearch()

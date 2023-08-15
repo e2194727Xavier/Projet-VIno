@@ -19,11 +19,12 @@ class SingleBottle extends Component
     public $showSelect = true;
     public $cellars;
     public $myCellarId;
+    public $quantity;
 
   
 
     // Handle the passed parameter
-    public function mount($myCellarId = null,$bottle_id=null, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true, $cellars=null)
+    public function mount($quantity = 1,$myCellarId = null,$bottle_id=null, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true, $cellars=null)
     {
 
         
@@ -35,7 +36,11 @@ class SingleBottle extends Component
         $this->cellars = $cellars;
         if(empty($cellar_id)){
             $this->cellar_id = $myCellarId;
+            if(!isset($myCellarId)){
+                $this->cellar_id = $cellars[0]->id;
+            }
         }
+        $this->quantity = $quantity;
         
        
         
@@ -54,6 +59,7 @@ class SingleBottle extends Component
             'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
             'quantityFromCatalogue' => $this->quantityFromCatalogue,
+            'quantity' => $this->quantity
         ]);
     }
 
