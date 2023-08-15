@@ -13,8 +13,8 @@ module.exports = {
       'xs': '500px'
     },
     extend: {
-      height: {
-        'screen-75': 'calc(100vh - 75px)',
+      textTransform: {
+        'capitalize': 'capitalize',
       },
       colors: {
         'red-wine': '#9B0738',

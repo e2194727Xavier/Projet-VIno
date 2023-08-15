@@ -1,5 +1,5 @@
-    <div class="my-4">
-        <h1 class="text-2xl text-left font-roboto my-6 ml-6">Catalogue des bouteilles</h1>
+    <div class="my-6">
+        <h1 class="text-left text-xl ml-6 mb-6 font-bold text-gray-500">Catalogue</h1>
         <div class="max-w-1200px">
             @if(session('success'))
             <div class="bg-green-200 text-green-800 p-2 mb-4 rounded">{{ session('success')}}</div>
