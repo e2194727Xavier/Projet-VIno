@@ -81,19 +81,16 @@ class SingleBottle extends Component
                             $existingBottle->pivot->save();
                             session()->flash('message', 'Modification au cellier ' . $userCellar->name . ' enregistrée avec succès !');
                         }
-
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
                         $existingBottle->pivot->save();
                         // comportement si l'usager ajoute une bouteille du catalogue
                     } elseif ($this->quantityFromCatalogue) {
-                        // dd($this->quantityFromCatalogue);
                         $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
                         $existingBottle->pivot->save();
                         session()->flash('message', 'Ajout au cellier ' . $userCellar->name . ' enregistré avec succès !');
                     }
                     // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
-                    // dd($this->quantityFromCatalogue);
                     $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                     session()->flash('message', 'Ajout au cellier ' . $userCellar->name . ' enregistré avec succès !');
                 }
