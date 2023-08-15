@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Bottles;
 
 use Livewire\Component;
 use App\Models\Bottle;
+use App\Models\Cellar;
 use Illuminate\Support\Facades\Auth;
 
 class SingleBottle extends Component
@@ -14,14 +15,31 @@ class SingleBottle extends Component
     public $fromCatalogue;
     public $quantityInCellar;
     public $quantityFromCatalogue;
+    public $cellar_id ;
+    public $showSelect = true;
+    public $cellars;
+    public $myCellarId;
+
+  
 
     // Handle the passed parameter
-    public function mount($bottle_id, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false)
+    public function mount($myCellarId = null,$bottle_id=null, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true, $cellars=null)
     {
+
+        
         $this->bottleId = $bottle_id;
         $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
         $this->quantityFromCatalogue = $quantityFromCatalogue;
+        $this->showSelect = $showSelect;
+        $this->cellars = $cellars;
+        if(empty($cellar_id)){
+            $this->cellar_id = $myCellarId;
+        }
+        
+       
+        
+        
     }
 
     public function render()
@@ -35,21 +53,22 @@ class SingleBottle extends Component
             'bottle' => $this->bottle,
             'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
-            'quantityFromCatalogue' => $this->quantityFromCatalogue,  // Pass the quantityInCellar to the view
+            'quantityFromCatalogue' => $this->quantityFromCatalogue,
         ]);
     }
+
+
+
 
     public function addToCellar()
     {
         $user = Auth::user();
         $selectedBottle = $this->bottle;
-
+    
         if ($user) {
-            $firstCellar = $user->cellars->first(); // Aller chercher le cellier de l'usager
-
-            if ($firstCellar) {
-                $existingBottle = $firstCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
-
+            $userCellar = Cellar::where("id", $this->cellar_id)->first();
+            if ($userCellar) {
+                $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
                 // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
                     // comportement si l'usager modifie les bouteilles dans son cellier
@@ -58,7 +77,7 @@ class SingleBottle extends Component
                         // dd($this->quantityInCellar);
                         if ($this->quantityInCellar == '0') {
                             // Emit an event to trigger the deleteBottle function in DeleteBottle component
-                            $this->emit('triggerDeleteBottle', $selectedBottle->id, $firstCellar->id);
+                            $this->emit('triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         }
 
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
@@ -70,7 +89,7 @@ class SingleBottle extends Component
                     }
                 // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
-                    $firstCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
+                    $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                 }
             }
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Bottles;
 use Livewire\Component;
 use App\Models\Bottle;
+use App\Models\Cellar;
 use Livewire\WithPagination;
 
 class ManyBottles extends Component
@@ -11,6 +12,8 @@ class ManyBottles extends Component
     public $search = '';
     public $component = 'bottles';
     protected $paginationTheme = "tailwind";
+    public $cellars;
+  /*   public $searchResults; */
     // public function styles()
     // {
     //     return [
@@ -18,6 +21,10 @@ class ManyBottles extends Component
     //     ];
     // }
     
+    public function mount(){
+       $user_id = auth()->user()->id;
+       $this->cellars = Cellar::where("user_id", $user_id)->get();
+    }
 
     public function render()
     {
@@ -41,10 +48,13 @@ class ManyBottles extends Component
     
          return view('livewire.Bottles.many-bottles', [
              'bottles' => $bottles,
-         ])->layout('layouts.app');
+         'cellars' => $this->cellars])->layout('layouts.app');
     }
     
-    protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'];
+ /*    public function updateSearchResults($results){
+       $this->searchResults = $results;
+    } */
+    protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'/* , 'searchResultsFetched' => 'updateSearchResults'*/];
 
     public function performSearch($searchTerm)
     {
