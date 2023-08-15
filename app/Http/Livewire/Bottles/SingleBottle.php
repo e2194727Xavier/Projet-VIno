@@ -60,46 +60,42 @@ class SingleBottle extends Component
         ]);
     }
 
+  
     public function addToCellar()
     {
         $user = Auth::user();
         $selectedBottle = $this->bottle;
-
         if ($user) {
             $userCellar = Cellar::find($this->cellar_id);
-           /*  dd($userCellar); */
             if ($userCellar) {
-               /*  dd("hi"); */
                 $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
-               /*  dd($existingBottle->pivot->quantity); */
                 // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
-                   /*  dd("salut"); */
                     // comportement si l'usager modifie les bouteilles dans son cellier
+                 /*    dd('Nous sommes dans existing Bottle'); */
                     if ($this->quantityInCellar) {
+                        
                         // lance la fonction de suppression si la valeur est 0
                         if ($this->quantityInCellar == '0') {
                             // Émet un évènement qui déclenche la fonction DeleteBottle dans DeleteBottle -- ne fonctionne pas.
+                            dd('hi');
                             $this->emitTo(DeleteBottle::class, 'triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         } else {
-                            $existingBottle->pivot->quantity = $this->quantityInCellar;
+                           /*  dd($this->quantityInCellar); */
+                            $existingBottle->pivot->quantity += $this->quantityInCellar;
                             $existingBottle->pivot->save();
                             session()->flash('message', 'Modification au cellier ' . $userCellar->name . ' enregistrée avec succès !');
                         }
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
-                          dd( "Quantity : ". $existingBottle );
-                        
                         $existingBottle->pivot->save();
                         // comportement si l'usager ajoute une bouteille du catalogue
                     } elseif ($this->quantityFromCatalogue) {
-                        dd("FromCatalogue");
                         $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
                         $existingBottle->pivot->save();
                         session()->flash('message', 'Ajout au cellier ' . $userCellar->name . ' enregistré avec succès !');
                     }
                     // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
-                    //dd("Bottle doesn't exist");
                     $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                     session()->flash('message', 'Ajout au cellier ' . $userCellar->name . ' enregistré avec succès !');
                 }
