@@ -13,6 +13,7 @@ class DeleteBottle extends Component
 
     public function handleTriggerDeleteBottle($bottleId, $cellarId)
     {
+        
         $this->bottleId = $bottleId;
         $this->cellarId = $cellarId;
 
