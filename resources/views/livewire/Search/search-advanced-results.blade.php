@@ -9,7 +9,4 @@
         <p>SAQ code: {{ $bottle->code_saq }}</p>
     </div>
     @endforeach
-    @if ($bottles instanceof \Illuminate\Pagination\LengthAwarePaginator)
-    <div class="my-4">{{ $bottles->links('livewire.simple-pagination') }}</div>
-    @endif
 </div>
