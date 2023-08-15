@@ -15,27 +15,30 @@ class SingleBottle extends Component
     public $fromCatalogue;
     public $quantityInCellar;
     public $quantityFromCatalogue;
-    public $cellar_id = "";
+    public $cellars;
+    public $cellar_id ;
     public $showSelect = true;
-  
+    public $quantity;
 
     // Handle the passed parameter
-    public function mount($cellar_id,$bottle_id, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true)
+    public function mount($cellar_id,$quantity = 1,$bottle_id, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false, $cellars = null, $showSelect = true)
     {
-        $this->cellar_id = $cellar_id;
+        dd($cellar_id);
         $this->bottleId = $bottle_id;
         $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
-        $this->quantityFromCatalogue = $quantityFromCatalogue;
+        $this->cellars = $cellars;
         $this->showSelect = $showSelect;
-        
-        
+        $this->quantityFromCatalogue = $quantityFromCatalogue;
+        $this->quantity = $quantity;
+
     }
 
     public function render()
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
         $cellar = session('cellar_inf');
+
         $this->bottle = Bottle::find($this->bottleId);
 
         return view('livewire.Bottles.single-bottle', [
@@ -44,6 +47,7 @@ class SingleBottle extends Component
             'fromCatalogue' => $this->fromCatalogue,
             'quantityInCellar' => $this->quantityInCellar,  // Pass the quantityInCellar to the view
             'quantityFromCatalogue' => $this->quantityFromCatalogue,
+            'quantity'=> $this->quantity
         ]);
     }
 
@@ -54,44 +58,41 @@ class SingleBottle extends Component
     {
         $user = Auth::user();
         $selectedBottle = $this->bottle;
-    
+
         if ($user) {
-            dd($this->cellar_id);
             $userCellar = Cellar::where("id", $this->cellar_id)->first();
-            dd($userCellar);
+
             if ($userCellar) {
                 $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
-                dd($existingBottle);
-                // Comportement si la bouteille se trouve déjà dans le cellier
+
                 if ($existingBottle) {
-                    dd($userCellar->id);
                     // comportement si l'usager modifie les bouteilles dans son cellier
                     if ($this->quantityInCellar >= 0) {
                         // lance la fonction de suppression si la valeur est 0
-                        // dd($this->quantityInCellar);
                         if ($this->quantityInCellar == '0') {
                             // Emit an event to trigger the deleteBottle function in DeleteBottle component
                             $this->emit('triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         }
-
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
                         $existingBottle->pivot->save();
-                    // comportement si l'usager ajoute une bouteille du catalogue
+                        // comportement si l'usager ajoute une bouteille du catalogue
                     } elseif ($this->quantityFromCatalogue) {
                         $existingBottle->pivot->quantity += $this->quantityFromCatalogue;
                         $existingBottle->pivot->save();
                     }
-                // Ajouter la bouteille au cellier si elle n'y existe pas
+                    // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
+                    // Add the bottle to the cellar if it's not already there
                     $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                 }
             }
         }
     }
 
-    public function deleteFromCellar(){
-
+    public function deleteFromCellar()  
+    {
     }
+
 
     public function increment()
     {
