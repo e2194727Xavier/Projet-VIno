@@ -75,6 +75,7 @@ class SingleBottle extends Component
             $userCellar = Cellar::where("id", $this->cellar_id)->first();
             if ($userCellar) {
                 $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
+                dd($existingBottle->pivot->quantity);
                 // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
                     // comportement si l'usager modifie les bouteilles dans son cellier
@@ -87,6 +88,7 @@ class SingleBottle extends Component
                         }
 
                         $existingBottle->pivot->quantity = $this->quantityInCellar;
+                        
                         $existingBottle->pivot->save();
                     // comportement si l'usager ajoute une bouteille du catalogue
                     } elseif ($this->quantityFromCatalogue) {
@@ -95,6 +97,7 @@ class SingleBottle extends Component
                     }
                 // Ajouter la bouteille au cellier si elle n'y existe pas
                 } else {
+                    dd("Bottle doesn't exist");
                     $userCellar->bottles()->attach($selectedBottle->id, ['quantity' => $this->quantityFromCatalogue]);
                 }
             }
