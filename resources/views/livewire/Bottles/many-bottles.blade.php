@@ -15,7 +15,7 @@
             @endif
 
             @foreach($bottles as $bottle)
-                @livewire('bottles.single-bottle', ['bottle_id' => $bottle['id'], "quantityInCellar" => 1], key($bottle['id']))
+                @livewire('bottles.single-bottle', ['bottle_id' => $bottle['id'], "quantityFromCatalogue" => 1, "fromCatalogue" => true], key($bottle['id']))
             @endforeach
 
             @if ($bottles instanceof \Illuminate\Pagination\LengthAwarePaginator)
