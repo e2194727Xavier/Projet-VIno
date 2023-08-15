@@ -25,7 +25,7 @@ class SingleBottle extends Component
 
 
     // Handle the passed parameter
-    public function mount($quantity = 1, $myCellarId = null, $bottle_id = null, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true, $cellars = null)
+    public function mount($quantity = 1, $myCellarId = null, $bottle_id = null, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false, $showSelect = true, $cellars = null)
     {
 
 
@@ -72,16 +72,12 @@ class SingleBottle extends Component
                 // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
                     // comportement si l'usager modifie les bouteilles dans son cellier
-                 /*    dd('Nous sommes dans existing Bottle'); */
                     if ($this->quantityInCellar) {
-                        
                         // lance la fonction de suppression si la valeur est 0
-                        if ($this->quantityInCellar == '0') {
+                        if ($this->quantityInCellar ) {
                             // Émet un évènement qui déclenche la fonction DeleteBottle dans DeleteBottle -- ne fonctionne pas.
-                            dd('hi');
                             $this->emitTo(DeleteBottle::class, 'triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         } else {
-                           /*  dd($this->quantityInCellar); */
                             $existingBottle->pivot->quantity += $this->quantityInCellar;
                             $existingBottle->pivot->save();
                             session()->flash('message', 'Modification au cellier ' . $userCellar->name . ' enregistrée avec succès !');

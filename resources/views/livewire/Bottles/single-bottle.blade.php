@@ -28,14 +28,13 @@
                     </button>
                     @if(!$fromCatalogue)
                     <!-- Montre la quantité contenue dans le cellier -->
-                    <input wire:model="quantityInCellar" class="w-8 h-6 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number' ">
+                    <input wire:model="quantityInCellar" class="w-8 h-6 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number'>
                     <button wire:click=" increment" class="text-xs w-6 h-6 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-full">
                     +
                     </button>
                     <button wire:click="addToCellar" class="rounded-lg bg-red-wine px-3 py-2 text-xs font-semibold text-white shadow-sm">Enregistrer</button>
                     @else
                     <input wire:model="quantityFromCatalogue" class="w-8 h-8 text-sm p-2 px-1 text-center rounded-md bg-gray-100 border-none" type='number'>
-                    @json($quantityFromCatalogue)
                     <button wire:click="increment" class="text-xs w-6 h-6 px-2 py-1 bg-gray-300 hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 rounded-full">
                         +
                     </button>
