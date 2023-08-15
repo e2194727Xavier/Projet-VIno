@@ -30,6 +30,14 @@
                 <button wire:click="addToCellar" class="rounded-md bg-red-wine px-3 py-2 text-xs font-semibold text-white shadow-sm">Ajouter</button>
                 @endif
 
+                @if($showSelect)
+                <select wire:model="cellar_id" name="cellars" id="cellars">
+                    <option value="" selected disabled>Choisir votre cellier</option>
+                    @foreach($cellars as $cellar)
+                    <option value="{{$cellar->id}}" @if($cellar->id == $cellar_id) selected @endif>{{$cellar->name}}</option>
+                    @endforeach
+                </select>
+                @endif
             </div>
         </div>
     </article>
