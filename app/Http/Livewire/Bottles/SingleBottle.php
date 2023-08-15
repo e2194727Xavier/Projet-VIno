@@ -15,19 +15,29 @@ class SingleBottle extends Component
     public $fromCatalogue;
     public $quantityInCellar;
     public $quantityFromCatalogue;
-    public $cellar_id = "";
+    public $cellar_id ;
     public $showSelect = true;
+    public $cellars;
+    public $myCellarId;
+
   
 
     // Handle the passed parameter
-    public function mount($cellar_id,$bottle_id, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true)
+    public function mount($myCellarId = null,$bottle_id=null, $quantityInCellar = null, $quantityFromCatalogue = 1, $fromCatalogue = false, $showSelect = true, $cellars=null)
     {
-        $this->cellar_id = $cellar_id;
+
+        
         $this->bottleId = $bottle_id;
         $this->fromCatalogue = $fromCatalogue;
         $this->quantityInCellar = $quantityInCellar;
         $this->quantityFromCatalogue = $quantityFromCatalogue;
         $this->showSelect = $showSelect;
+        $this->cellars = $cellars;
+        if(empty($cellar_id)){
+            $this->cellar_id = $myCellarId;
+        }
+        
+       
         
         
     }
@@ -56,15 +66,11 @@ class SingleBottle extends Component
         $selectedBottle = $this->bottle;
     
         if ($user) {
-            dd($this->cellar_id);
             $userCellar = Cellar::where("id", $this->cellar_id)->first();
-            dd($userCellar);
             if ($userCellar) {
                 $existingBottle = $userCellar->bottles()->where('bottle_id', $selectedBottle->id)->first();
-                dd($existingBottle);
                 // Comportement si la bouteille se trouve déjà dans le cellier
                 if ($existingBottle) {
-                    dd($userCellar->id);
                     // comportement si l'usager modifie les bouteilles dans son cellier
                     if ($this->quantityInCellar >= 0) {
                         // lance la fonction de suppression si la valeur est 0
