@@ -7,9 +7,9 @@
         </div>
 
         <div x-show="editing">
-            <div class="flex justify-end space-x-0 mt-2 ">
+            <div class="flex justify-end mt-2 ">
                 <button class="mr-2" x-on:click="editing = false; Livewire.emit('updateCellarName', newName)">✔</button>
-                <button x-on:click="editing = false">✕</button>
+                <button class="mr-2" x-on:click="editing = false">✕</button>
             </div>
         </div>
     </div>
