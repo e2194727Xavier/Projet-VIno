@@ -21,7 +21,6 @@ class CellarSearch extends Component
             $this->showDropdown = false;
         }
     }
-    
 
     public function selectResult($result)
     {
@@ -35,10 +34,6 @@ class CellarSearch extends Component
         $this->results = []; // Vide le resultat de la recherche
         $this->search = ''; // vide le input de la recherche
     }
-    
-
-
-
 
     public function render()
     {

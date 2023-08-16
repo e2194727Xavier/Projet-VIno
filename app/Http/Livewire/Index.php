@@ -17,10 +17,6 @@ class Index extends Component
 
     public function saveChanges()
     {
-        // Sauvegardez le nouveau nom du cellier en base de données
-        // ...
-
-        // Revenez au mode d'affichage normal
         $this->editing = false;
     }
 
@@ -28,18 +24,15 @@ class Index extends Component
         $this->emit('inputChanged', $value); 
      
     }
-    
 
+    // Récupérer les informations du cellier depuis la session ou autre source
     public function mount()
     {
-        // Récupérer les informations du cellier depuis la session ou autre source
         $this->cellars = session('cellar_inf');
-      /*   dd($this->cellar); */
     }
 
     public function render()
     {
-
         return view('livewire.Layouts.index', ['cellars' => $this->cellars]);
     }
 }

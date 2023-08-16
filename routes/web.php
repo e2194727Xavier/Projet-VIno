@@ -4,14 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Index;
 use App\Http\Livewire\Bottles\UpdateBottle;
-
 use App\Http\Livewire\Bottles\AddBottle;
 use App\Http\Livewire\Bottles\ManyBottles;
-
 use App\Http\Livewire\Cellars\AddCellar;
 use App\Http\Livewire\Cellars\SingleCellar;
 use App\Http\Livewire\Cellars\ManyCellars;
-
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Livewire\Bottles\BottleAdvancedForm;
 use App\Http\Livewire\Search\SearchAdvancedResults;

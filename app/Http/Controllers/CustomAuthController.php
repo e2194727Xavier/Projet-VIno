@@ -15,7 +15,7 @@ class CustomAuthController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Afficher une liste des ressources.
      *
      * @return \Illuminate\Http\Response
      */
@@ -61,11 +61,8 @@ class CustomAuthController extends Controller
 
             DB::commit();
 
-            // Auth::login($user);
-            return redirect(route('login'))->withSuccess('Votre compte a été créé avec succès!');
+        return redirect(route('login'))->withSuccess('Votre compte a été créé avec succès!');
         } catch (Exception $e) {
-            //throw $e -> ceci est pour nous seulement, pour debugger
-            // Log::error('An error occurred: ' . $e->getMessage());
             DB::rollBack();
             return back()->withError('Une erreur est survenue. Veuillez réessayer.');
         }
@@ -89,10 +86,6 @@ class CustomAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            // À utiliser plus tard
-             /*   $cellarInf = $user->cellars->pluck('name','id')->toArray();
-            $ids = array_keys($cellarInf);
-            $names = array_values($cellarInf); */
 
             $cellarInf = $user->cellars->map(function ($cellar) {
                 return [
@@ -101,28 +94,14 @@ class CustomAuthController extends Controller
                 ];
             })->toArray();
 
-         /*    dd($cellarInf); */
-            // Récupération du premier cellier de l'utilisateur
-        /*     $cellar = $user->cellars->first(); */
-
-            // Création du tableau contenant les informations du cellier
-          /*   $cellarInf = [
-                'ids' => $ids,
-                'names' => $names
-            ];
- */
             // Stockage des informations du cellier dans la session
             session()->put('cellar_inf', $cellarInf);
-
-            // Récupération des informations du cellier depuis la session
-            
 
             // Redirection vers la page souhaitée après l'authentification réussie ou vers bottles par défaut
             return redirect()->intended(route('index'));
         }
         // Redirection vers la page de connexion avec un message d'erreur en cas d'échec d'authentification
         return redirect()->back()->withErrors('Courriel ou mot de passe invalide');
-        // return redirect()->back()->withErrors(['loginError' => 'Courriel ou mot de passe invalide']);
 
     }
 }

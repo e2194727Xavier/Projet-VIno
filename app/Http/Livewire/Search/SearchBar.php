@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Search;
+
 use Livewire\Component;
 
 class SearchBar extends Component
@@ -17,7 +18,3 @@ class SearchBar extends Component
         $this->emitUp('searchPerformed', $this->search);
     }
 }
-
-
-
-

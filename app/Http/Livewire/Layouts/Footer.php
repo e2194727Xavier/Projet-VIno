@@ -32,14 +32,5 @@ class Footer extends Component
         $url = route('cellars');
         return redirect($url);
     }
-
-    // public function redirectToWishlist()
-    // {
-    //     $url = route('wishlist');
-    //     return redirect($url);
-    // }
-    
-
-
 }
 

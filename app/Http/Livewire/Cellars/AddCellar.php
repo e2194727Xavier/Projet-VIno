@@ -30,8 +30,7 @@ class AddCellar extends Component
             'name' => $this->nom,
             'user_id' => $userId
         ]);
-  
-       
+
         $cellarInf = Cellar::where('user_id', $userId)->get()->map(function ($cellar) {
             return [
                 'id' => $cellar->id,
