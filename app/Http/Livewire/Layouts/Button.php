@@ -16,12 +16,6 @@ class Button extends Component
         $this->action = $action; 
     }
 
-    public function handleClick()
-    {
-        // coder la fonction handleClick
-       
-    }
-
     public function render()
     {
         return view('livewire.Layouts.button');

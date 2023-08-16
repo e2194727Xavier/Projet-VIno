@@ -11,8 +11,7 @@ class BottleSearch extends Component
     public $search = '';
     public $results = [];
     public $selectedBottle;
-    /* public $displayResults = true; */
-    
+
     public function fetchResults()
         {
             if (!empty($this->search)) {
@@ -25,7 +24,7 @@ class BottleSearch extends Component
                                     ->orWhereBetween('price', [(float)$this->search, (float)$this->search + 0.999999]);
                         });
                     }
-                })->paginate(10, ['*'], 'page', $this->page); // Use $this->page to fetch the correct page of results
+                })->paginate(10, ['*'], 'page', $this->page); // Utilisez $this->page pour récupérer la page correcte des résultats.
 
                 $newResults = collect($bottles->items())->map(function ($bottle) {
                     return [
@@ -45,7 +44,6 @@ class BottleSearch extends Component
             } else {
                 $this->results = [];
             }
-            /* $this->emit('searchResultsFetched', $this->results); */
         }
 
     public $page = 1;
@@ -67,10 +65,6 @@ class BottleSearch extends Component
             $selectedBottle = Bottle::find($resultId);
             $this->search = $selectedBottle->name;
             $this->results = [];
-            // $this->selectedBottle = $bottle;
-
-            // dd($selectedBottle);
-        
             $this->emit('resultSelected', $selectedBottle);
         }
         

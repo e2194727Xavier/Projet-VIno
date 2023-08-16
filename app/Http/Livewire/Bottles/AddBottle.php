@@ -1,13 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Bottles;
-
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\QueryException;
 use Livewire\WithFileUploads;
-use Livewire\WithValidation;
-
 use Livewire\Component;
 use App\Models\Country;
 use App\Models\Cellar;
@@ -61,7 +55,6 @@ class AddBottle extends Component
        $this->cellars = Cellar::where('user_id', $userId)->get();       
     }
 
-
     public function render()
     {
         return view('livewire.Bottles.add-bottle', ['bottle' => $this->bottle, 'countries' => $this->countries, 'types' => $this->types, 'cellars'=> $this->cellars]);
@@ -72,10 +65,6 @@ class AddBottle extends Component
         // dd($selectedBottle);
         $this->selectedBottle = $selectedBottle;  
     }
-
-    /* public function resetSelectedBottle(){
-        $this->selectedBottle = null;
-    } */
 
     public function saveUnlistedBottle()
     {

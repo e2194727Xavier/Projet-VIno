@@ -22,12 +22,9 @@ class SingleBottle extends Component
     public $quantity;
     public $numberOfBottle;
 
-
-
-    // Handle the passed parameter
+    // Gérer le paramètre passé.
     public function mount($quantity = 1, $myCellarId = null, $bottle_id = null, $quantityInCellar = null, $quantityFromCatalogue = null, $fromCatalogue = false, $showSelect = true, $cellars = null)
     {
-
 
         $this->bottleId = $bottle_id;
         $this->quantityInCellar = $quantityInCellar;
@@ -78,8 +75,6 @@ class SingleBottle extends Component
                             // Émet un évènement qui déclenche la fonction DeleteBottle dans DeleteBottle -- ne fonctionne pas.
                             $this->emitTo(DeleteBottle::class, 'triggerDeleteBottle', $selectedBottle->id, $userCellar->id);
                         } else {
-                            dd($this->quantityInCellar);
-
                             $existingBottle->pivot->quantity += $this->quantityInCellar;
                             $existingBottle->pivot->save();
                             session()->flash('message', 'Modification au cellier ' . $userCellar->name . ' enregistrée avec succès !');

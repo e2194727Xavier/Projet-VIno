@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Bottles;
 use Livewire\Component;
-use App\Models\Bottle;
 
 class BottleAdvancedForm extends Component
 {
@@ -48,7 +47,6 @@ class BottleAdvancedForm extends Component
         // Redirect to the search results page with the parameters
         return redirect()->route('search-advanced-results', $parameters);
     }
-
 
     public function render()
     {

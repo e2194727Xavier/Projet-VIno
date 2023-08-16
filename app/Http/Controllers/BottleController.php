@@ -20,18 +20,12 @@ class BottleController extends Controller
      */
 
 
-        public function index()
-{
-    $bottles = Bottle::all();
-    return view('bottle.index', ['bottles' => $bottles]);
-}
+    public function index()
+    {
+        $bottles = Bottle::all();
+        return view('bottle.index', ['bottles' => $bottles]);
+    }
 
-        // Aller chercher toutes les bouteilles
-        // $bottles = Bottle::all();
-        // return view('bottle.index');
-        // return response()->json(['success' => true, 'data' => $bottles])->header('Content-Type', 'application/json');
-    
-///////////////////////////////////////////////////////////////////////////////
     /**
      * Rechercher une bouteille dans la BD
      *
@@ -51,7 +45,7 @@ class BottleController extends Controller
 
         return response()->json($rows);
     }
-/////////////////////////////////////////////////////////////////////////
+
     /**
      * Ajouter une bouteille non listée à un cellier.
      *
@@ -78,7 +72,7 @@ class BottleController extends Controller
 
         return response()->json($result);
     }
-///////////////////////////////////////////////////////////////////////
+
     /**
      * Boire une bouteille d'un cellier (delete)
      *
@@ -87,13 +81,13 @@ class BottleController extends Controller
      */
     public function drinkBottleFromCellar(Request $request)
     {
-        // Get the bottle ID, cellar ID, consumption date, and note from the request
+        // Obtenir bottle ID, cellar ID, consumption date, note de la demande
         $bottleId = $request->input('bottle_id');
         $cellarId = $request->input('cellar_id');
         $consumptionDate = $request->input('consumption_date');
         $note = $request->input('note');
 
-        // Add consumed bottle information to the BottleConsumed table
+        // Ajouter les informations sur la bouteille consommée dans la table BottleConsumed
         $bottleConsumed = new BottleConsumed([
             'bottle_id' => $bottleId,
             'cellar_id' => $cellarId,
@@ -103,7 +97,7 @@ class BottleController extends Controller
 
         $bottleConsumed->save();
 
-        // Decrease the quantity of bottles in the BottleInCellar table
+        // Diminuer la quantité de bouteilles dans la table BottleInCellar
         $bottleCellar = BottleInCellar::where('bottle_id', $bottleId)
             ->where('cellar_id', $cellarId)
             ->first();
@@ -115,7 +109,7 @@ class BottleController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Bottle consumed and quantity updated']);
     }
-////////////////////////////////////////////////////////////////////////////
+ 
     /**
      * Ajouter une bouteille ou mettre à jour une quantité de bouteilles dans un cellier.
      *
@@ -144,7 +138,7 @@ class BottleController extends Controller
         return response()->json(['success' => false, 'message' => 'Bottle not found in the cellar']);
     }
 
-      /**
+    /**
      * Afficher une bouteille.
      *
      * @param  \App\Models\Bottle  $cellar
@@ -155,4 +149,3 @@ class BottleController extends Controller
         return view('bottle.show', ['bottle' => $bottle]);
     }
 }
-

@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Livewire\Search;
+
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Bottle;
 use App\Models\Cellar;
 
-use Illuminate\Pagination\LengthAwarePaginator;
-
 class SearchAdvancedResults extends Component
 {
     use WithPagination;
 
-    // public $results = [];
     public $component = 'bottles';
     protected $paginationTheme = "tailwind";
     protected $bottles = [];
@@ -38,7 +36,7 @@ class SearchAdvancedResults extends Component
         $this->cellars = Cellar::where("user_id", $user_id)->get();
     }
 
-        public function render()
+    public function render()
     {
         return view('livewire.Bottles.many-bottles', [
             'bottles' => $this->bottles,
@@ -46,14 +44,15 @@ class SearchAdvancedResults extends Component
             'priceMin' => $this->priceMin,
             'priceMax' => $this->priceMax,
             'description' => $this->description,
-        ]);    }
+        ]);
+    }
 
     // selon l'écouteur d'évènement searchPerformance, lance le chargement des bouteilles
     public function performSearch()
     {
         $this->loadBottles();
     }
-    
+
     // chargement des bouteilles
     public function loadBottles()
     {
@@ -79,19 +78,4 @@ class SearchAdvancedResults extends Component
         // Fetch les bouteilles, les ordonne et les pagine
         $this->bottles = $query->orderBy('name')->paginate(9);
     }
-
-    // 
-    // public function getBottlesProperty()
-    // {
-    //     return $this->bottles;
-    // }
-
-    // charge les données de la recherche et lance le chargement des bouteilles
-    // public function searchPerformed($search)
-    // {
-    //     $this->search = $search;
-    //     $this->loadBottles();
-    // }
-    
 }
-

@@ -13,13 +13,6 @@ class ManyBottles extends Component
     public $component = 'bottles';
     protected $paginationTheme = "tailwind";
     public $cellars;
-  /*   public $searchResults; */
-    // public function styles()
-    // {
-    //     return [
-    //         'css/livewire.css',
-    //     ];
-    // }
     
     public function mount(){
        $user_id = auth()->user()->id;
@@ -51,9 +44,6 @@ class ManyBottles extends Component
          'cellars' => $this->cellars])->layout('layouts.app');
     }
     
- /*    public function updateSearchResults($results){
-       $this->searchResults = $results;
-    } */
     protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'/* , 'searchResultsFetched' => 'updateSearchResults'*/];
 
     public function performSearch($searchTerm)
