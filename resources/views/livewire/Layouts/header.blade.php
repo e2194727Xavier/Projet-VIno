@@ -1,4 +1,4 @@
-<header class="flex bg-red-wine justify-between item-center w-full right-0 items-center">
+<header class="flex bg-red-wine justify-between item-center w-full right-0 items-center mb-2">
     <!-- icone logo  -->
     <div class="ml-4">
         <a href="{{ route('index') }}">
