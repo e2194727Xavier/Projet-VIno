@@ -2,9 +2,9 @@
 
 **Travail effectué dans le cadre d'un porjet d'équipe de fin de session**
 
-<img src="vino-login.png" alt="Description of image" width="250"/>
-<img src="vino-accueil.png" alt="Description of image" width="250"/>
-<img src="vino-catalogue.png" alt="Description of image" width="250"/>
+![](vino-login.png) |
+![](vino-accueil.png) |
+![](vino-catalogue.png)
 
 ### https://marylinec.sg-host.com/
 
