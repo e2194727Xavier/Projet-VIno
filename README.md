@@ -2,13 +2,16 @@
 
 **Travail effectué dans le cadre d'un porjet d'équipe de fin de session**
 
-![](vino-login.png)
+
+<img src="/vino-login.png"  width="220" height="400">
+<img src="/vino-accueil.png"  width="220" height="400">
+<img src="/vino-catalogue.png"  width="220" height="400">
 
 ### https://marylinec.sg-host.com/
 
 ## Instructions d'installation
 
-1. Clonez votre dépôt forké sur votre machine locale :
+1. Clonez le dépot sur votre machine locale :
 
     ```bash
     git clone https://github.com/maryline888/Projet-VIno/
